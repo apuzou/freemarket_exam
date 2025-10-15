@@ -58,7 +58,7 @@ php artisan db:seed
 
 ## ER 図
 
-![ER図](/freemarket_exam_er.png)
+<img width="1200" height="718" alt="freemarket_exam_er" src="https://github.com/user-attachments/assets/0eef632b-6844-4a71-8829-90c9b67130b1" />
 
 ## URL
 
