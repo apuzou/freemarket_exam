@@ -68,6 +68,3 @@ php artisan db:seed
 - 商品検索: `http://localhost/search`
 - phpMyAdmin: `http://localhost:8080/`
 
-
-
-# freemarket_exam
