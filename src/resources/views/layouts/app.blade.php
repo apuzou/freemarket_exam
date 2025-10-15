@@ -10,28 +10,28 @@
     <!-- ヘッダー -->
     <header class="header">
         <!-- ロゴ -->
-        <a href="{{ route('home') }}" class="logo">
+        <a href="{{ route('home') }}" class="header-logo">
             <img src="{{ asset('storage/img/logo.svg') }}" alt="COACHTECH">
         </a>
 
         <!-- 検索バー -->
-        <form action="{{ route('search') }}" method="GET" class="search">
+        <form action="{{ route('search') }}" method="GET" class="header-search">
             <input type="text" name="keyword" placeholder="なにをお探しですか?" value="{{ request('keyword') }}">
         </form>
 
         <!-- ナビゲーション -->
-        <div class="navigation">
+        <div class="navigation-menu">
             @auth
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="nav-link">ログアウト</button>
+                    <button type="submit" class="navigation-link">ログアウト</button>
                 </form>
-                <a href="#" class="nav-link">マイページ</a>
-                <a href="#" class="primary-button">出品</a>
+                <a href="#" class="navigation-link">マイページ</a>
+                <a href="#" class="navigation-button-primary">出品</a>
             @else
-                <a href="{{ route('login') }}" class="nav-link">ログイン</a>
-                <a href="#" class="nav-link">マイページ</a>
-                <a href="#" class="primary-button">出品</a>
+                <a href="{{ route('login') }}" class="navigation-link">ログイン</a>
+                <a href="#" class="navigation-link">マイページ</a>
+                <a href="#" class="navigation-button-primary">出品</a>
             @endauth
         </div>
     </header>

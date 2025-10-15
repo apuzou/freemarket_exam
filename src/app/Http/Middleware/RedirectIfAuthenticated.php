@@ -23,6 +23,8 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                // 基本的な認証済みユーザーのリダイレクト
+                // プロフィール設定はFortifyServiceProviderで制御
                 return redirect(RouteServiceProvider::HOME);
             }
         }

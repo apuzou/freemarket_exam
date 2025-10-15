@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,9 @@ Route::get('/', [ItemController::class, 'index'])->name('home');
 
 // 検索機能
 Route::get('/search', [ItemController::class, 'search'])->name('search');
+
+Route::middleware(['auth'])->group(function () {
+    // マイページプロフィールルート（統合）
+    Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('mypage.profile');
+    Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('mypage.profile.update');
+});
