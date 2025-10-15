@@ -1,0 +1,25 @@
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .header-search {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .navigation-tabs .tab-list {
+        flex-direction: column;
+    }
+
+    .navigation-tab {
+        text-align: center;
+    }
+}

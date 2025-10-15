@@ -1,0 +1,40 @@
+/* ヘッダー関連 */
+.header {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    padding: var(--spacing-md) var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-logo {
+    color: var(--color-light);
+    text-decoration: none;
+}
+
+.header-logo img {
+    height: 40px;
+    width: auto;
+}
+
+.header-search {
+    flex: 1;
+    max-width: 600px;
+    margin: 0 var(--spacing-lg);
+}
+
+.header-search input {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-md);
+    background-color: var(--color-light);
+    color: var(--color-gray);
+}
+
+.header-search input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-info);
+}

@@ -1,0 +1,32 @@
+/* プロフィールページ専用 */
+.profile-image-section {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.profile-image-display {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--color-gray-lightest);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin: 0 auto var(--spacing-md) auto;
+}
+
+.profile-image-display img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-image-section .button-secondary {
+    display: inline-block;
+    margin-top: var(--spacing-sm);
+}
+
+.file-input-hidden {
+    display: none;
+}

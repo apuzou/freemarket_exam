@@ -1,0 +1,35 @@
+/* ボタン関連 */
+.button-submit {
+    width: 100%;
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-md);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-light);
+}
+
+.button-submit:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.button-secondary {
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-md);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    background-color: var(--color-secondary);
+    color: var(--color-light);
+}
+
+.button-secondary:hover {
+    background-color: var(--color-secondary-hover);
+}
