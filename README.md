@@ -1,4 +1,4 @@
-# COACHTECHフリマサイト
+# COACHTECH フリマサイト
 
 ## 環境構築
 
@@ -67,7 +67,5 @@ php artisan db:seed
 - ログイン: `http://localhost/login`
 - 商品検索: `http://localhost/search`
 - phpMyAdmin: `http://localhost:8080/`
-
-
 
 # freemarket_exam
