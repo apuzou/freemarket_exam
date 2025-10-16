@@ -18,6 +18,7 @@
 @import url("./pages/auth.css");
 @import url("./pages/home.css");
 @import url("./pages/profile.css");
+@import url("./pages/mypage.css");
 
 /* ユーティリティ */
 @import url("./utilities/responsive.css");

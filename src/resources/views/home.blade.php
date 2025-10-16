@@ -25,7 +25,7 @@
                     <div class="product-image-placeholder">商品画像</div>
                 @endif
 
-                <h3 class="product-title">{{ $item->name }}</h3>
+                <p class="product-title">{{ $item->name }}</p>
                 <p class="product-price">¥{{ number_format($item->price) }}</p>
 
                 @if($item->purchases()->exists())
@@ -33,9 +33,7 @@
                 @endif
             </div>
         @empty
-            <div class="empty-state">
-                <p>商品が見つかりませんでした。</p>
-            </div>
+                <p class="empty-state">商品が見つかりませんでした。</p>
         @endforelse
     </div>
 

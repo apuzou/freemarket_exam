@@ -23,7 +23,7 @@
 
                 <div class="form-field">
                     <label for="name" class="form-field-label">ユーザー名</label>
-                    <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name" class="form-field-input">
+                    <input id="name" type="text" name="name" value="{{ old('name') }}" autofocus autocomplete="name" class="form-field-input">
                     @error('name')
                         <span class="form-field-error">{{ $message }}</span>
                     @enderror
@@ -31,7 +31,7 @@
 
                 <div class="form-field">
                     <label for="email" class="form-field-label">メールアドレス</label>
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="email" class="form-field-input">
+                    <input id="email" type="text" name="email" value="{{ old('email') }}" autocomplete="email" class="form-field-input">
                     @error('email')
                         <span class="form-field-error">{{ $message }}</span>
                     @enderror
@@ -39,7 +39,7 @@
 
                 <div class="form-field">
                     <label for="password" class="form-field-label">パスワード</label>
-                    <input id="password" type="password" name="password" required autocomplete="new-password" class="form-field-input">
+                    <input id="password" type="password" name="password" autocomplete="new-password" class="form-field-input">
                     @error('password')
                         <span class="form-field-error">{{ $message }}</span>
                     @enderror
@@ -47,7 +47,7 @@
 
                 <div class="form-field">
                     <label for="password_confirmation" class="form-field-label">確認用パスワード</label>
-                    <input id="password_confirmation" type="password" name="password_confirmation" required autocomplete="new-password" class="form-field-input">
+                    <input id="password_confirmation" type="password" name="password_confirmation" autocomplete="new-password" class="form-field-input">
                     @error('password_confirmation')
                         <span class="form-field-error">{{ $message }}</span>
                     @enderror

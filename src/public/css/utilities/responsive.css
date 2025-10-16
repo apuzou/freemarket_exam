@@ -22,4 +22,18 @@
     .navigation-tab {
         text-align: center;
     }
+
+    .profile-info-section {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-md);
+    }
+
+    .profile-details {
+        order: 2;
+    }
+
+    .profile-actions {
+        order: 3;
+    }
 }

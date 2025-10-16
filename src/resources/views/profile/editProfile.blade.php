@@ -26,7 +26,7 @@
         <!-- 入力フィールド -->
         <div class="form-field">
             <label for="name" class="form-field-label">ユーザー名</label>
-            <input id="name" type="text" name="name" value="{{ old('name', auth()->user()->name) }}" required class="form-field-input">
+            <input id="name" type="text" name="name" value="{{ old('name', auth()->user()->name) }}" class="form-field-input">
             @error('name')
                 <span class="form-field-error">{{ $message }}</span>
             @enderror
@@ -34,7 +34,7 @@
 
         <div class="form-field">
             <label for="postal_code" class="form-field-label">郵便番号</label>
-            <input id="postal_code" type="text" name="postal_code" value="{{ old('postal_code', auth()->user()->profile?->postal_code) }}" placeholder="郵便番号を入力してください" required class="form-field-input">
+            <input id="postal_code" type="text" name="postal_code" value="{{ old('postal_code', auth()->user()->profile?->postal_code) }}" placeholder="郵便番号を入力してください" class="form-field-input">
             @error('postal_code')
                 <span class="form-field-error">{{ $message }}</span>
             @enderror
@@ -42,7 +42,7 @@
 
         <div class="form-field">
             <label for="address" class="form-field-label">住所</label>
-            <input id="address" type="text" name="address" value="{{ old('address', auth()->user()->profile?->address) }}" placeholder="住所を入力してください" required class="form-field-input">
+            <input id="address" type="text" name="address" value="{{ old('address', auth()->user()->profile?->address) }}" placeholder="住所を入力してください" class="form-field-input">
             @error('address')
                 <span class="form-field-error">{{ $message }}</span>
             @enderror

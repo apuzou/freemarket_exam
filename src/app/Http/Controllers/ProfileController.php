@@ -9,6 +9,30 @@ use Illuminate\Support\Facades\Storage;
 class ProfileController extends Controller
 {
     /**
+     * マイページ（プロフィール画面）を表示
+     */
+    public function index(Request $request)
+    {
+        $user = auth()->user();
+        $page = $request->get('page', 'sell'); // デフォルトは出品商品
+        
+        // 出品した商品一覧
+        $soldItems = collect(); // 現在は空のコレクション
+        // 将来的に: $soldItems = $user->items()->with('purchases')->get();
+        
+        // 購入した商品一覧  
+        $purchasedItems = collect(); // 現在は空のコレクション
+        // 将来的に: $purchasedItems = $user->purchases()->with('item')->get();
+        
+        return view('profile.mypage', [
+            'user' => $user,
+            'currentPage' => $page,
+            'soldItems' => $soldItems,
+            'purchasedItems' => $purchasedItems,
+        ]);
+    }
+
+    /**
      * プロフィール編集画面を表示
      */
     public function edit()

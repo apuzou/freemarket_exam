@@ -1,0 +1,73 @@
+@extends('layouts.app')
+
+@section('title', 'マイページ')
+
+@section('content')
+<div class="mypage-container">
+    <!-- プロフィール情報セクション -->
+    <div class="profile-info-section">
+        <div class="profile-image-container">
+            @if($user->profile && $user->profile->profile_image)
+                <img src="{{ asset('storage/' . $user->profile->profile_image) }}" alt="プロフィール画像" class="profile-image">
+            @else
+                <div class="profile-image-placeholder"></div>
+            @endif
+        </div>
+
+        <p class="username">{{ $user->name }}</p>
+
+        <a href="{{ route('mypage.profile') }}" class="button-edit-profile">プロフィールを編集</a>
+    </div>
+
+    <!-- タブナビゲーション（既存スタイル継承） -->
+    <div class="navigation-tabs">
+        <div class="tab-list">
+            <a href="{{ route('mypage', ['page' => 'sell']) }}" class="navigation-tab {{ $currentPage === 'sell' ? 'navigation-tab-active' : '' }}">
+                出品した商品
+            </a>
+            <a href="{{ route('mypage', ['page' => 'buy']) }}" class="navigation-tab {{ $currentPage === 'buy' ? 'navigation-tab-active' : '' }}">
+                購入した商品
+            </a>
+        </div>
+    </div>
+
+    <!-- 商品一覧（既存スタイル継承） -->
+    <div class="mypage-content">
+        @if($currentPage === 'sell')
+            @if($soldItems->isEmpty())
+                    <p class="empty-state">商品が見つかりませんでした</p>
+            @else
+                <div class="product-grid">
+                    @foreach($soldItems as $item)
+                        <div class="product-card">
+                            @if($item->image_path)
+                                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="product-image">
+                            @else
+                                <div class="product-image-placeholder">商品画像</div>
+                            @endif
+                            <p class="product-title">{{ $item->name }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+        @else
+            @if($purchasedItems->isEmpty())
+                <p class="empty-state">商品が見つかりませんでした</p>
+            @else
+                <div class="product-grid">
+                    @foreach($purchasedItems as $purchase)
+                        <div class="product-card">
+                            @if($purchase->item->image_path)
+                                <img src="{{ asset('storage/' . $purchase->item->image_path) }}" alt="{{ $purchase->item->name }}" class="product-image">
+                            @else
+                                <div class="product-image-placeholder">商品画像</div>
+                            @endif
+                            <p class="product-title">{{ $purchase->item->name }}</p>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+        @endif
+    </div>
+</div>
+@endsection

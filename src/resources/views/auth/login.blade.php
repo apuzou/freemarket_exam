@@ -23,7 +23,7 @@
 
                 <div class="form-field">
                     <label for="email" class="form-field-label">メールアドレス</label>
-                    <input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username" class="form-field-input">
+                    <input id="email" type="text" name="email" value="{{ old('email') }}" autofocus autocomplete="email" class="form-field-input">
                     @error('email')
                         <span class="form-field-error">{{ $message }}</span>
                     @enderror
@@ -31,7 +31,7 @@
 
                 <div class="form-field">
                     <label for="password" class="form-field-label">パスワード</label>
-                    <input id="password" type="password" name="password" required autocomplete="current-password" class="form-field-input">
+                    <input id="password" type="password" name="password" autocomplete="current-password" class="form-field-input">
                     @error('password')
                         <span class="form-field-error">{{ $message }}</span>
                     @enderror

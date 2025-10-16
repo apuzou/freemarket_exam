@@ -26,12 +26,12 @@
                     @csrf
                     <button type="submit" class="navigation-link">ログアウト</button>
                 </form>
-                <a href="#" class="navigation-link">マイページ</a>
+                <a href="{{ route('mypage') }}" class="navigation-link">マイページ</a>
                 <a href="#" class="navigation-button-primary">出品</a>
             @else
                 <a href="{{ route('login') }}" class="navigation-link">ログイン</a>
-                <a href="#" class="navigation-link">マイページ</a>
-                <a href="#" class="navigation-button-primary">出品</a>
+                <a href="{{ route('login') }}" class="navigation-link">マイページ</a>
+                <a href="{{ route('login') }}" class="navigation-button-primary">出品</a>
             @endauth
         </div>
     </header>

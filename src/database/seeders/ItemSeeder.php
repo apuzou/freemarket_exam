@@ -35,7 +35,7 @@ class ItemSeeder extends Seeder
                 'description' => '新鮮な玉ねぎ3束のセット',
                 'price' => 300,
                 'condition' => 3, // やや傷や汚れあり
-                'image_path' => 'images/Tumbler+souvenir.jpg', // 玉ねぎの画像がないため代替
+                'image_path' => 'images/iLoveIMG+d.jpg',
             ],
             [
                 'user_id' => 4,
