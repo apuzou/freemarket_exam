@@ -1,5 +1,6 @@
 /* レスポンシブデザイン */
 @media (max-width: 768px) {
+    /* ヘッダー */
     .header {
         flex-direction: column;
         gap: var(--spacing-md);
@@ -10,11 +11,13 @@
         margin: 0;
     }
 
-    .product-grid {
+    /* 商品グリッド */
+    .card-grid {
         grid-template-columns: repeat(2, 1fr);
         padding: var(--spacing-lg) var(--spacing-md);
     }
 
+    /* ナビゲーション */
     .navigation-tabs .tab-list {
         flex-direction: column;
     }
@@ -23,6 +26,7 @@
         text-align: center;
     }
 
+    /* プロフィール */
     .profile-info-section {
         flex-direction: column;
         text-align: center;
@@ -35,5 +39,24 @@
 
     .profile-actions {
         order: 3;
+    }
+
+    /* フォーム */
+    .form-container {
+        padding: var(--spacing-lg);
+    }
+
+    /* カテゴリー選択 */
+    .category-selection {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    /* 価格入力 */
+    .input-price {
+        padding-left: 35px;
+    }
+
+    .input-price-wrapper::before {
+        left: 10px;
     }
 }

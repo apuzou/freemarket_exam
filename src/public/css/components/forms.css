@@ -1,15 +1,12 @@
 /* フォーム関連 */
 .form-container {
-    max-width: 400px;
+    max-width: 600px;
     margin: var(--spacing-xxl) auto;
     padding: var(--spacing-xl);
-    background-color: var(--color-light);
-    border-radius: var(--border-radius-md);
-    box-shadow: var(--shadow-md);
 }
 
 .form-title {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
     color: var(--color-gray);
     text-align: center;
     margin-bottom: var(--spacing-xl);
@@ -24,6 +21,7 @@
     display: block;
     margin-bottom: 8px;
     color: var(--color-gray);
+    font-weight: bold;
 }
 
 .form-field-input {

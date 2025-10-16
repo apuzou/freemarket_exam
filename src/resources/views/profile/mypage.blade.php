@@ -37,15 +37,20 @@
             @if($soldItems->isEmpty())
                     <p class="empty-state">商品が見つかりませんでした</p>
             @else
-                <div class="product-grid">
+                <div class="card-grid">
                     @foreach($soldItems as $item)
-                        <div class="product-card">
+                        <div class="card">
                             @if($item->image_path)
-                                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="product-image">
+                                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="card__image">
                             @else
-                                <div class="product-image-placeholder">商品画像</div>
+                                <div class="card__image-placeholder">商品画像</div>
                             @endif
-                            <p class="product-title">{{ $item->name }}</p>
+                            <p class="card__title">{{ $item->name }}</p>
+                            <p class="card__price">¥{{ number_format($item->price) }}</p>
+                            
+                            @if($item->purchases()->exists())
+                                <span class="card__badge">Sold</span>
+                            @endif
                         </div>
                     @endforeach
                 </div>
@@ -54,15 +59,16 @@
             @if($purchasedItems->isEmpty())
                 <p class="empty-state">商品が見つかりませんでした</p>
             @else
-                <div class="product-grid">
+                <div class="card-grid">
                     @foreach($purchasedItems as $purchase)
-                        <div class="product-card">
+                        <div class="card">
                             @if($purchase->item->image_path)
-                                <img src="{{ asset('storage/' . $purchase->item->image_path) }}" alt="{{ $purchase->item->name }}" class="product-image">
+                                <img src="{{ asset('storage/' . $purchase->item->image_path) }}" alt="{{ $purchase->item->name }}" class="card__image">
                             @else
-                                <div class="product-image-placeholder">商品画像</div>
+                                <div class="card__image-placeholder">商品画像</div>
                             @endif
-                            <p class="product-title">{{ $purchase->item->name }}</p>
+                            <p class="card__title">{{ $purchase->item->name }}</p>
+                            <p class="card__price">¥{{ number_format($purchase->item->price) }}</p>
                         </div>
                     @endforeach
                 </div>

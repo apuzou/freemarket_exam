@@ -38,6 +38,10 @@ Route::get('/', [ItemController::class, 'index'])->name('home');
 Route::get('/search', [ItemController::class, 'search'])->name('search');
 
 Route::middleware(['auth'])->group(function () {
+    // 商品出品ルート
+    Route::get('/sell', [ItemController::class, 'create'])->name('sell');
+    Route::post('/sell', [ItemController::class, 'store'])->name('sell.store');
+    
     // マイページルート
     Route::get('/mypage', [ProfileController::class, 'index'])->name('mypage');
     

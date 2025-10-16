@@ -16,13 +16,11 @@ class ProfileController extends Controller
         $user = auth()->user();
         $page = $request->get('page', 'sell'); // デフォルトは出品商品
         
-        // 出品した商品一覧
-        $soldItems = collect(); // 現在は空のコレクション
-        // 将来的に: $soldItems = $user->items()->with('purchases')->get();
+        // 出品した商品一覧（実際のデータを取得）
+        $soldItems = $user->items()->with('purchases')->get();
         
-        // 購入した商品一覧  
-        $purchasedItems = collect(); // 現在は空のコレクション
-        // 将来的に: $purchasedItems = $user->purchases()->with('item')->get();
+        // 購入した商品一覧（実際のデータを取得）
+        $purchasedItems = $user->purchases()->with('item')->get();
         
         return view('profile.mypage', [
             'user' => $user,

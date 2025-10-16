@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Category;
+use App\Http\Requests\ExhibitionRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
@@ -61,5 +63,44 @@ class ItemController extends Controller
         $items = $query->orderBy('created_at', 'desc')->paginate(12);
 
         return view('home', compact('items', 'keyword'));
+    }
+
+    /**
+     * 商品出品画面を表示
+     */
+    public function create()
+    {
+        $categories = Category::all();
+        return view('items.sell', compact('categories'));
+    }
+
+    /**
+     * 商品出品処理
+     */
+    public function store(ExhibitionRequest $request)
+    {
+        // 画像のアップロード処理
+        $imagePath = null;
+        if ($request->hasFile('product_image')) {
+            $imagePath = $request->file('product_image')->store('images', 'public');
+        }
+
+        // 商品の作成
+        $item = Item::create([
+            'user_id' => Auth::id(),
+            'name' => $request->name,
+            'brand' => $request->brand,
+            'description' => $request->description,
+            'price' => $request->price,
+            'condition' => $request->condition,
+            'image_path' => $imagePath,
+        ]);
+
+        // カテゴリーの関連付け
+        if ($request->categories) {
+            $item->categories()->attach($request->categories);
+        }
+
+        return redirect()->route('home')->with('success', '商品を出品しました。');
     }
 }

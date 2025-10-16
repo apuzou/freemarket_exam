@@ -7,7 +7,7 @@
 
 body {
     font-family: "Arial", sans-serif;
-    background-color: var(--color-gray-lighter);
+    background-color: var(--color-gray-lightest);
     color: var(--color-gray);
     line-height: 1.6;
 }

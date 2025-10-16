@@ -3,21 +3,21 @@
 @section('title', 'プロフィール設定')
 
 @section('content')
-<div class="form-container">
+<div class="profile-container">
     <h1 class="form-title">プロフィール設定</h1>
     <form method="POST" action="{{ route('mypage.profile.update') }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
 
         <!-- プロフィール画像 -->
-        <div class="profile-image-section">
+        <div class="profile-section">
             <div class="profile-image-display">
                 @if(auth()->user()->profile && auth()->user()->profile->profile_image)
-                    <img src="{{ asset('storage/' . auth()->user()->profile->profile_image) }}" alt="プロフィール画像">
+                    <img src="{{ asset('storage/' . auth()->user()->profile->profile_image) }}" alt="プロフィール画像" class="profile-image">
                 @endif
             </div>
-            <label for="profile_image" class="button-secondary">画像を選択する</label>
-            <input type="file" id="profile_image" name="profile_image" accept="image/*" class="file-input-hidden">
+            <label for="profile_image" class="upload-button">画像を選択する</label>
+            <input type="file" id="profile_image" name="profile_image" accept="image/*" class="upload-input-hidden">
             @error('profile_image')
                 <span class="form-field-error">{{ $message }}</span>
             @enderror

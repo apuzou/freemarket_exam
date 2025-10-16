@@ -1,0 +1,137 @@
+/* 商品出品ページ専用 */
+
+/* セクションタイトル */
+.form-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.form-section-title {
+    font-size: var(--font-size-lg);
+    color: var(--color-gray-light);
+    margin-bottom: var(--spacing-lg);
+    font-weight: bold;
+    border-bottom: 1px solid var(--color-dark);
+    padding-bottom: var(--spacing-sm);
+}
+
+/* 画像アップロードセクション（出品ページ専用） */
+.upload-section {
+    border: 2px dashed var(--color-gray-light);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-xl);
+    text-align: center;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-gray-lightest);
+    position: relative;
+}
+
+.upload-input-hidden {
+    display: none;
+}
+
+.upload-button-options {
+    position: absolute;
+    z-index: 3;
+}
+
+.upload-preview {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-preview-image {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section--has-image .upload-button {
+    display: none;
+}
+
+/* カテゴリー選択 */
+.category-selection {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-sm);
+}
+
+.category-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.category-checkbox {
+    display: none;
+}
+
+.category-text {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--border-radius-sm);
+    background-color: white;
+    color: var(--color-primary);
+    font-size: var(--font-size-sm);
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 100%;
+}
+
+.category-checkbox:checked + .category-text {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* 価格入力（出品ページ専用） */
+.input-price-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input-price {
+    width: 100%;
+    height: 40px;
+    padding-left: 25px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-md);
+    transition: border-color 0.3s ease;
+}
+
+.input-price:focus {
+    border-color: var(--color-info);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.input-price-wrapper::before {
+    content: "¥";
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-gray);
+    font-weight: bold;
+    pointer-events: none;
+    z-index: 2;
+    font-size: var(--font-size-md);
+    display: block;
+}
+
+
