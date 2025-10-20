@@ -13,7 +13,9 @@
         <div class="profile-section">
             <div class="profile-image-display">
                 @if(auth()->user()->profile && auth()->user()->profile->profile_image)
-                    <img src="{{ asset('storage/' . auth()->user()->profile->profile_image) }}" alt="プロフィール画像" class="profile-image">
+                    <img src="{{ asset('storage/' . auth()->user()->profile->profile_image) }}" alt="プロフィール画像" class="profile-image" id="profile-image-preview">
+                @else
+                    <div class="profile-image-placeholder" id="profile-image-preview"></div>
                 @endif
             </div>
             <label for="profile_image" class="upload-button">画像を選択する</label>
@@ -62,4 +64,36 @@
         </div>
     </form>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const fileInput = document.getElementById('profile_image');
+    const previewContainer = document.getElementById('profile-image-preview');
+    
+    fileInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                // 既存の画像またはプレースホルダーを置き換え
+                if (previewContainer.tagName === 'IMG') {
+                    previewContainer.src = e.target.result;
+                } else {
+                    // プレースホルダーの場合、img要素に置き換え
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.alt = 'プロフィール画像プレビュー';
+                    img.className = 'profile-image';
+                    img.id = 'profile-image-preview';
+                    
+                    previewContainer.parentNode.replaceChild(img, previewContainer);
+                }
+            };
+            
+            reader.readAsDataURL(file);
+        }
+    });
+});
+</script>
 @endsection
