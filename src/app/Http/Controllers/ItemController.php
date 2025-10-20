@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Category;
+use App\Models\Like;
+use App\Models\Comment;
 use App\Http\Requests\ExhibitionRequest;
+use App\Http\Requests\CommentRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,10 +26,12 @@ class ItemController extends Controller
                 return redirect()->route('login');
             }
             // いいねした商品を取得
-            $items = Auth::user()->likes()
-                ->with(['user', 'categories'])
-                ->orderBy('created_at', 'desc')
-                ->paginate(12);
+            $items = Item::whereHas('likes', function($query) {
+                $query->where('user_id', Auth::id());
+            })
+            ->with(['user', 'categories'])
+            ->orderBy('created_at', 'desc')
+            ->paginate(12);
             $title = 'マイリスト';
         } else {
             // 全商品表示（自分が出品した商品は除外）
@@ -102,5 +107,69 @@ class ItemController extends Controller
         }
 
         return redirect()->route('home')->with('success', '商品を出品しました。');
+    }
+
+    /**
+     * 商品詳細画面を表示
+     */
+    public function show(Item $item)
+    {
+        $item->load(['user', 'categories', 'comments.user']);
+        
+        // いいね数とコメント数を取得
+        $likeCount = $item->likes()->count();
+        $commentCount = $item->comments()->count();
+        
+        // 現在のユーザーがいいねしているかチェック
+        $isLiked = false;
+        if (Auth::check()) {
+            $isLiked = $item->likes()->where('user_id', Auth::id())->exists();
+        }
+        
+        return view('items.show', compact('item', 'likeCount', 'commentCount', 'isLiked'));
+    }
+
+
+    /**
+     * いいね機能のトグル（フォーム送信版）
+     */
+    public function toggleLike(Request $request, Item $item)
+    {
+        // ログインチェック
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('message', 'いいね機能を使用するにはログインが必要です。');
+        }
+
+        $user = Auth::user();
+        $like = Like::where('user_id', $user->id)
+                   ->where('item_id', $item->id)
+                   ->first();
+
+        if ($like) {
+            // いいねを解除
+            $like->delete();
+        } else {
+            // いいねを追加
+            Like::create([
+                'user_id' => $user->id,
+                'item_id' => $item->id,
+            ]);
+        }
+
+        return redirect()->route('item.show', $item);
+    }
+
+    /**
+     * コメント追加（フォーム送信版）
+     */
+    public function addComment(CommentRequest $request, Item $item)
+    {
+        Comment::create([
+            'user_id' => Auth::id(),
+            'item_id' => $item->id,
+            'comment' => $request->comment,
+        ]);
+
+        return redirect()->route('item.show', $item);
     }
 }

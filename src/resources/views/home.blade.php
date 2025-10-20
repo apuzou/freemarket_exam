@@ -18,7 +18,7 @@
     <!-- 商品一覧 -->
     <div class="card-grid">
         @forelse($items as $item)
-            <div class="card">
+            <a href="{{ route('item.show', $item) }}" class="card card--link">
                 @if($item->image_path)
                     <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="card__image">
                 @else
@@ -31,7 +31,7 @@
                 @if($item->purchases()->exists())
                     <span class="card__badge">Sold</span>
                 @endif
-            </div>
+            </a>
         @empty
                 <p class="empty-state">商品が見つかりませんでした。</p>
         @endforelse

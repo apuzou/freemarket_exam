@@ -37,6 +37,9 @@ Route::get('/', [ItemController::class, 'index'])->name('home');
 // 検索機能
 Route::get('/search', [ItemController::class, 'search'])->name('search');
 
+// 商品詳細ルート（認証不要）
+Route::get('/item/{item}', [ItemController::class, 'show'])->name('item.show');
+
 Route::middleware(['auth'])->group(function () {
     // 商品出品ルート
     Route::get('/sell', [ItemController::class, 'create'])->name('sell');
@@ -48,4 +51,8 @@ Route::middleware(['auth'])->group(function () {
     // マイページプロフィールルート（統合）
     Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('mypage.profile');
     Route::patch('/mypage/profile', [ProfileController::class, 'update'])->name('mypage.profile.update');
+    
+    // いいね・コメント機能（認証必須）
+    Route::post('/item/{item}/like', [ItemController::class, 'toggleLike'])->name('item.like');
+    Route::post('/item/{item}/comment', [ItemController::class, 'addComment'])->name('item.comment');
 });

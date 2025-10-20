@@ -39,7 +39,7 @@
             @else
                 <div class="card-grid">
                     @foreach($soldItems as $item)
-                        <div class="card">
+                        <a href="{{ route('item.show', $item) }}" class="card card--link">
                             @if($item->image_path)
                                 <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="card__image">
                             @else
@@ -47,11 +47,11 @@
                             @endif
                             <p class="card__title">{{ $item->name }}</p>
                             <p class="card__price">¥{{ number_format($item->price) }}</p>
-                            
+
                             @if($item->purchases()->exists())
                                 <span class="card__badge">Sold</span>
                             @endif
-                        </div>
+                        </a>
                     @endforeach
                 </div>
             @endif
@@ -61,7 +61,7 @@
             @else
                 <div class="card-grid">
                     @foreach($purchasedItems as $purchase)
-                        <div class="card">
+                        <a href="{{ route('item.show', $purchase->item) }}" class="card card--link">
                             @if($purchase->item->image_path)
                                 <img src="{{ asset('storage/' . $purchase->item->image_path) }}" alt="{{ $purchase->item->name }}" class="card__image">
                             @else
@@ -69,7 +69,7 @@
                             @endif
                             <p class="card__title">{{ $purchase->item->name }}</p>
                             <p class="card__price">¥{{ number_format($purchase->item->price) }}</p>
-                        </div>
+                        </a>
                     @endforeach
                 </div>
             @endif

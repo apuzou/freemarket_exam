@@ -82,7 +82,7 @@
 
 .category-text {
     display: inline-block;
-    padding: var(--spacing-xs) var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-md);
     border: 1px solid var(--color-primary);
     border-radius: var(--border-radius-sm);
     background-color: white;

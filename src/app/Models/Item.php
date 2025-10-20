@@ -44,4 +44,19 @@ class Item extends Model
     {
         return $this->hasMany(Purchase::class);
     }
+
+    /**
+     * 商品の状態を具体的表現に変換するアクセサー
+     */
+    public function getConditionTextAttribute()
+    {
+        $conditions = [
+            '1' => '良好',
+            '2' => '目立った傷や汚れなし',
+            '3' => 'やや傷や汚れあり',
+            '4' => '状態が悪い'
+        ];
+        
+        return $conditions[$this->condition] ?? $this->condition;
+    }
 }

@@ -59,3 +59,18 @@
     padding: var(--spacing-xxl);
     color: var(--color-gray-light);
 }
+
+/* リンクカード */
+.card--link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card--link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    color: inherit;
+}
