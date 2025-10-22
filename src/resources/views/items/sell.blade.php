@@ -12,7 +12,7 @@
         <!-- 商品画像 -->
         <div class="form-field">
             <label class="form-field-label">商品画像</label>
-            <div class="upload-section">
+            <div class="upload-area">
                 <div class="upload-button-options">
                     <label for="product_image" class="upload-button">画像を選択する</label>
                 </div>
@@ -25,8 +25,8 @@
         </div>
 
         <!-- 商品の詳細 -->
-        <div class="form-section">
-            <h2 class="form-section-title">商品の詳細</h2>
+        <div class="section">
+            <h2 class="section-title">商品の詳細</h2>
             
             <!-- カテゴリー -->
             <div class="form-field">
@@ -61,8 +61,8 @@
         </div>
 
         <!-- 商品名と説明 -->
-        <div class="form-section">
-            <h2 class="form-section-title">商品名と説明</h2>
+        <div class="section">
+            <h2 class="section-title">商品名と説明</h2>
             
             <!-- 商品名 -->
             <div class="form-field">
@@ -114,7 +114,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const productImageInput = document.getElementById('product_image');
-    const uploadSection = document.querySelector('.upload-section');
+    const uploadSection = document.querySelector('.upload-area');
     
     if (productImageInput && uploadSection) {
         productImageInput.addEventListener('change', function(e) {
@@ -125,13 +125,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 reader.onload = function(e) {
                     const preview = document.getElementById('imagePreview');
                     preview.innerHTML = '<img src="' + e.target.result + '" alt="商品画像プレビュー" class="upload-preview-image">';
-                    uploadSection.classList.add('upload-section--has-image');
+                    uploadSection.classList.add('upload-area-has-image');
                 };
                 reader.readAsDataURL(file);
             } else {
                 const preview = document.getElementById('imagePreview');
                 preview.innerHTML = '';
-                uploadSection.classList.remove('upload-section--has-image');
+                uploadSection.classList.remove('upload-area-has-image');
             }
         });
     }

@@ -1,88 +1,4 @@
-/* 汎用ボタン */
-.button {
-    display: inline-block;
-    padding: 12px 24px;
-    border: none;
-    border-radius: var(--border-radius-sm);
-    font-size: var(--font-size-md);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    text-align: center;
-    font-weight: bold;
-}
-
-.button--primary {
-    background-color: var(--color-primary);
-    color: var(--color-light);
-}
-
-.button--primary:hover {
-    background-color: var(--color-primary-hover);
-}
-
-.button--secondary {
-    background-color: var(--color-secondary);
-    color: var(--color-light);
-}
-
-.button--secondary:hover {
-    background-color: var(--color-secondary-hover);
-}
-
-.button--outline {
-    background-color: transparent;
-    border: 2px solid var(--color-primary);
-    color: var(--color-primary);
-}
-
-.button--outline:hover {
-    background-color: var(--color-primary);
-    color: var(--color-light);
-}
-
-.button--full-width {
-    width: 100%;
-}
-
-.button--small {
-    min-width: 130px;
-    height: 35px;
-    padding: 5px 10px;
-    font-size: var(--font-size-base);
-    line-height: 23px;
-}
-
-.button--submit {
-    background-color: var(--color-primary);
-    color: var(--color-light);
-    width: 100%;
-}
-
-.button--upload {
-    display: inline-block;
-    min-width: 130px;
-    height: 35px;
-    padding: 5px 10px;
-    border: 2px solid var(--color-primary);
-    background-color: transparent;
-    color: var(--color-primary);
-    text-decoration: none;
-    text-align: center;
-    border-radius: var(--border-radius-md);
-    font-size: var(--font-size-base);
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    line-height: 23px;
-}
-
-.button--upload:hover {
-    background-color: var(--color-primary);
-    color: var(--color-light);
-}
-
-/* 後方互換性のためのエイリアス */
+/* ボタン関連 */
 .button-submit {
     display: inline-block;
     padding: 12px 24px;
@@ -101,25 +17,6 @@
 
 .button-submit:hover {
     background-color: var(--color-primary-hover);
-}
-
-.button-secondary {
-    display: inline-block;
-    padding: 12px 24px;
-    border: none;
-    border-radius: var(--border-radius-sm);
-    font-size: var(--font-size-md);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    text-align: center;
-    font-weight: bold;
-    background-color: var(--color-secondary);
-    color: var(--color-light);
-}
-
-.button-secondary:hover {
-    background-color: var(--color-secondary-hover);
 }
 
 .upload-button {

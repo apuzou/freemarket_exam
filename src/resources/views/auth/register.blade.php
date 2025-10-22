@@ -9,9 +9,10 @@
 <body>
     <!-- ヘッダー -->
     <header class="header">
-        <div class="header-logo">
+        <!-- ロゴ -->
+        <a href="{{ route('home') }}" class="header-logo">
             <img src="{{ asset('storage/img/logo.svg') }}" alt="COACHTECH">
-        </div>
+        </a>
     </header>
 
     <!-- メインコンテンツ -->

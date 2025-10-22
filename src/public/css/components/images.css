@@ -1,4 +1,4 @@
-/* プロフィール画像 */
+/* 画像関連 */
 .profile-image {
     width: 120px;
     height: 120px;
@@ -16,7 +16,6 @@
     justify-content: center;
 }
 
-/* プロフィール画像表示コンテナ（統合版） */
 .profile-image-display {
     width: 120px;
     height: 120px;

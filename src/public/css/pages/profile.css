@@ -12,13 +12,3 @@
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-xl);
 }
-
-/* プロフィール画像コンテナ（マイページ専用） */
-.profile-image-container {
-    flex-shrink: 0;
-    padding: var(--spacing-md) var(--spacing-xxl);
-}
-
-.upload-input-hidden {
-    display: none;
-}

@@ -6,10 +6,10 @@
 }
 
 .form-title {
-    font-size: var(--font-size-xl);
-    color: var(--color-gray);
     text-align: center;
     margin-bottom: var(--spacing-xl);
+    color: var(--color-gray);
+    font-size: var(--font-size-xl);
     font-weight: bold;
 }
 
@@ -28,9 +28,12 @@
     width: 100%;
     padding: 12px;
     border: 1px solid #ddd;
-    border-radius: var(--border-radius-sm);
     font-size: var(--font-size-md);
+    border-radius: var(--border-radius-sm);
     transition: border-color 0.3s ease;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .form-field-input:focus {
@@ -40,10 +43,10 @@
 }
 
 .form-field-error {
+    display: block;
+    margin-top: var(--spacing-xs);
     color: var(--color-danger);
     font-size: var(--font-size-base);
-    margin-top: var(--spacing-xs);
-    display: block;
 }
 
 .form-actions {
@@ -57,11 +60,11 @@
 }
 
 .form-links a {
-    color: var(--color-info);
-    text-decoration: none;
-    font-size: var(--font-size-base);
     display: block;
     margin-top: var(--spacing-sm);
+    color: var(--color-info);
+    font-size: var(--font-size-base);
+    text-decoration: none;
 }
 
 .form-links a:hover {

@@ -9,9 +9,9 @@
         <!-- 商品画像 -->
         <div class="item-image-section">
             @if($item->image_path)
-                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="card__image item-detail-image">
+                <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="card-image item-detail-image">
             @else
-                <div class="card__image-placeholder item-detail-image">商品画像</div>
+                <div class="card-image-placeholder item-detail-image">商品画像</div>
             @endif
         </div>
 
@@ -64,20 +64,18 @@
 
             <!-- 商品説明 -->
             <div class="form-field">
-                <p class="form-section-title">商品説明</p>
-                <div class="item-description">
-                    <p>{{ $item->description }}</p>
-                </div>
+                <p class="section-title">商品説明</p>
+                <div class="item-description">{{ $item->description }}</div>
             </div>
 
             <!-- 商品情報 -->
             <div class="form-field">
-                <p class="form-section-title">商品の情報</p>
+                <p class="section-title">商品の情報</p>
                 <div class="item-details">
                     <span class="form-field-label">カテゴリー</span>
                     <div class="category-tags">
                         @foreach($item->categories as $category)
-                            <span class="category_badge">{{ $category->name }}</span>
+                            <span class="badge badge-category">{{ $category->name }}</span>
                         @endforeach
                     </div>
                 </div>
@@ -89,9 +87,9 @@
 
             <!-- コメントセクション -->
             <div class="form-field">
-                <p class="form-section-title">コメント({{ $commentCount }})</p>
+                <p class="section-title">コメント({{ $commentCount }})</p>
                 @if($item->comments->count() > 0)
-                    <div class="comments-list">
+                    <div>
                         @foreach($item->comments as $comment)
                             <div class="comment-item">
                                 <div class="comment-user">
@@ -102,11 +100,11 @@
                                             <div class="profile-image-placeholder"></div>
                                         @endif
                                     </div>
-                                    <span class="user-name">{{ $comment->user->name }}</span>
+                                    <div class="user-name">
+                                        <span>{{ $comment->user->name }}</span>
+                                    </div>
                                 </div>
-                                <div class="comment-content">
-                                    {{ $comment->comment }}
-                                </div>
+                                <div class="comment-content">{{ $comment->comment }}</div>
                             </div>
                         @endforeach
                     </div>
@@ -120,7 +118,7 @@
                         @csrf
                         <p class="form-field-label">商品へのコメント</p>
                         <div class="form-field">
-                            <textarea name="comment" class="form-field-input comment-input" placeholder="コメントを入力してください"></textarea>
+                            <textarea name="comment" class="form-field-input" rows="5" placeholder="コメントを入力してください"></textarea>
                             @error('comment')
                                 <span class="form-field-error">{{ $message }}</span>
                             @enderror
