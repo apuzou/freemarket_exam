@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
-    <!-- ヘッダー -->
     <header class="header">
         <!-- ロゴ -->
         <a href="{{ route('home') }}" class="header-logo">
@@ -15,7 +14,6 @@
         </a>
     </header>
 
-    <!-- メインコンテンツ -->
     <main class="main">
         <div class="form-container">
             <h1 class="form-title">ログイン</h1>

@@ -4,7 +4,6 @@
 
 @section('content')
 <div class="item-detail-container">
-    <!-- 商品情報セクション -->
     <div class="item-detail-section">
         <!-- 商品画像 -->
         <div class="item-image-section">
@@ -17,14 +16,16 @@
 
         <!-- 商品詳細情報 -->
         <div class="item-info-section">
-            <!-- 商品名・ブランド -->
+            <!-- 商品名 -->
             <h1 class="item-name">{{ $item->name }}</h1>
+
+            <!-- ブランド -->
             <p class="item-brand">{{ $item->brand }}</p>
 
             <!-- 価格 -->
             <p class="item-price">{{ number_format($item->price) }}</p>
 
-            <!-- いいね・コメント -->
+            <!-- お気に入り・コメント数 -->
             <div class="interaction-container">
                 <div class="interaction-item">
                     @auth
@@ -68,14 +69,14 @@
                 <div class="item-description">{{ $item->description }}</div>
             </div>
 
-            <!-- 商品情報 -->
+            <!-- 商品カテゴリ・状態 -->
             <div class="form-field">
                 <p class="section-title">商品の情報</p>
                 <div class="item-details">
                     <span class="form-field-label">カテゴリー</span>
                     <div class="category-tags">
                         @foreach($item->categories as $category)
-                            <span class="badge badge-category">{{ $category->name }}</span>
+                            <span class="badge-category">{{ $category->name }}</span>
                         @endforeach
                     </div>
                 </div>
@@ -85,7 +86,7 @@
                 </div>
             </div>
 
-            <!-- コメントセクション -->
+            <!-- コメント -->
             <div class="form-field">
                 <p class="section-title">コメント({{ $commentCount }})</p>
                 @if($item->comments->count() > 0)

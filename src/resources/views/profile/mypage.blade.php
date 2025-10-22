@@ -19,7 +19,7 @@
         <a href="{{ route('mypage.profile') }}" class="button-edit-profile">プロフィールを編集</a>
     </div>
 
-    <!-- タブナビゲーション（既存スタイル継承） -->
+    <!-- タブナビゲーション -->
     <div class="navigation-tabs">
         <div class="tab-list">
             <a href="{{ route('mypage', ['page' => 'sell']) }}" class="navigation-tab {{ $currentPage === 'sell' ? 'navigation-tab-active' : '' }}">
@@ -31,11 +31,11 @@
         </div>
     </div>
 
-    <!-- 商品一覧（既存スタイル継承） -->
+    <!-- 商品一覧 -->
     <div class="mypage-content">
         @if($currentPage === 'sell')
             @if($soldItems->isEmpty())
-                    <p class="empty-state">商品が見つかりませんでした</p>
+                <p class="empty-state">商品が見つかりませんでした</p>
             @else
                 <div class="card-grid">
                     @foreach($soldItems as $item)
@@ -45,9 +45,11 @@
                             @else
                                 <div class="card-image-placeholder">商品画像</div>
                             @endif
+
                             <p class="card-title">{{ $item->name }}</p>
+
                             <p class="card-price">¥{{ number_format($item->price) }}</p>
-                            
+
                             @if($item->purchases()->exists())
                                 <span class="card-badge">Sold</span>
                             @endif
@@ -67,7 +69,9 @@
                             @else
                                 <div class="card-image-placeholder">商品画像</div>
                             @endif
+
                             <p class="card-title">{{ $purchase->item->name }}</p>
+
                             <p class="card-price">¥{{ number_format($purchase->item->price) }}</p>
                         </a>
                     @endforeach

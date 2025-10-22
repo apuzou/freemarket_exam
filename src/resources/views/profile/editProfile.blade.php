@@ -8,7 +8,6 @@
     <form method="POST" action="{{ route('mypage.profile.update') }}" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
-
         <!-- プロフィール画像 -->
         <div class="profile-section">
             <div class="profile-image-display">
@@ -18,8 +17,10 @@
                     <div class="profile-image-placeholder" id="profile-image-preview"></div>
                 @endif
             </div>
-            <label for="profile_image" class="upload-button">画像を選択する</label>
-            <input type="file" id="profile_image" name="profile_image" accept="image/*" class="upload-input-hidden">
+            <label for="profile_image" class="upload-button">
+                <span>画像を選択する</span>
+                <input type="file" id="profile_image" name="profile_image" accept="image/*" class="upload-input-hidden">
+            </label>
             @error('profile_image')
                 <span class="form-field-error">{{ $message }}</span>
             @enderror
@@ -58,7 +59,6 @@
             @enderror
         </div>
 
-        <!-- 送信ボタン -->
         <div class="form-actions">
             <button type="submit" class="button-submit">更新する</button>
         </div>
@@ -69,28 +69,26 @@
 document.addEventListener('DOMContentLoaded', function() {
     const fileInput = document.getElementById('profile_image');
     const previewContainer = document.getElementById('profile-image-preview');
-    
+
     fileInput.addEventListener('change', function(e) {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
-            
+
             reader.onload = function(e) {
-                // 既存の画像またはプレースホルダーを置き換え
                 if (previewContainer.tagName === 'IMG') {
                     previewContainer.src = e.target.result;
                 } else {
-                    // プレースホルダーの場合、img要素に置き換え
                     const img = document.createElement('img');
                     img.src = e.target.result;
                     img.alt = 'プロフィール画像プレビュー';
                     img.className = 'profile-image';
                     img.id = 'profile-image-preview';
-                    
+
                     previewContainer.parentNode.replaceChild(img, previewContainer);
                 }
             };
-            
+
             reader.readAsDataURL(file);
         }
     });

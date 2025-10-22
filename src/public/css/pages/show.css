@@ -1,4 +1,231 @@
-/* 商品詳細ページ専用 - コンポーネント活用版 */
+
+.item-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+}
+
+.item-detail-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xxl);
+    align-items: start;
+}
+
+.item-image-section {
+    margin-top: var(--spacing-xl);
+}
+
+.item-detail-image {
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.item-info-section {
+    padding: var(--spacing-lg);
+}
+
+.item-name {
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-gray);
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.item-brand {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-gray-light);
+}
+
+.item-price {
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-gray);
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.item-price::before {
+    font-size: 25px;
+    content: "¥";
+}
+
+.item-price::after {
+    font-size: 25px;
+    content: "(税込)";
+}
+
 .button-purchase {
     margin-bottom: var(--spacing-xxl);
+}
+
+.item-description {
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.item-details {
+    display: flex;
+    margin-bottom: var(--spacing-sm);
+    gap: var(--spacing-md);
+}
+
+.detail-value {
+    color: var(--color-gray);
+}
+
+.category-tags {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--spacing-lg);
+}
+
+.badge-category {
+    padding: 0 var(--spacing-md);
+    background-color: var(--color-gray-lighter);
+    color: var(--color-dark);
+    font-size: var(--font-size-base);
+    border-radius: var(--border-radius-lg);
+}
+
+/* インタラクション関連 */
+.interaction-container {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding-left: var(--spacing-sm);
+}
+
+.interaction-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    cursor: pointer;
+}
+
+.like-form {
+    display: inline-block;
+}
+
+.like-icon,
+.comment-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.like-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs);
+    background: none;
+    color: #666;
+    border: none;
+    font-size: var(--font-size-md);
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.like-button:hover {
+    color: var(--color-danger);
+}
+
+.like-button.liked {
+    color: var(--color-danger);
+}
+
+.comment-count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--color-gray);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+}
+
+.like-count,
+.comment-count-number {
+    color: var(--color-gray);
+    font-size: var(--font-size-sm);
+}
+
+/* コメント関連 */
+.comment-item {
+    padding-bottom: var(--spacing-md);
+}
+
+.comment-user {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+}
+
+.user-avatar {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-avatar .profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-avatar .profile-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-gray-lighter);
+    color: var(--color-gray);
+    font-size: var(--font-size-sm);
+}
+
+.user-name {
+    flex: 1;
+    color: var(--color-gray);
+    font-weight: bold;
+}
+
+.comment-content {
+    padding-left: 60px;
+    color: var(--color-gray);
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.comment-login-required {
+    text-align: center;
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+    background-color: var(--color-gray-lightest);
+    color: var(--color-gray);
+    border-radius: var(--border-radius-sm);
+}
+
+.comment-login-required a {
+    color: var(--color-primary);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.comment-login-required a:hover {
+    text-decoration: underline;
 }

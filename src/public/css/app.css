@@ -12,17 +12,9 @@
 @import url("./components/navigation.css");
 @import url("./components/forms.css");
 @import url("./components/buttons.css");
-@import url("./components/cards.css");
 @import url("./components/images.css");
+@import url("./components/cards.css");
 @import url("./components/pagination.css");
-@import url("./components/sections.css");
-@import url("./components/upload.css");
-@import url("./components/inputs.css");
-@import url("./components/categories.css");
-@import url("./components/badges.css");
-@import url("./components/item-detail.css");
-@import url("./components/interactions.css");
-@import url("./components/comments.css");
 
 /* ページ別スタイル */
 @import url("./pages/profile.css");

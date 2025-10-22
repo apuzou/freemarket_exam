@@ -5,29 +5,30 @@
 @section('content')
 <div class="form-container">
     <h1 class="form-title">商品の出品</h1>
-    
+
     <form method="POST" action="{{ route('sell.store') }}" enctype="multipart/form-data">
         @csrf
-
         <!-- 商品画像 -->
         <div class="form-field">
             <label class="form-field-label">商品画像</label>
             <div class="upload-area">
                 <div class="upload-button-options">
-                    <label for="product_image" class="upload-button">画像を選択する</label>
+                    <label for="product_image" class="upload-button">
+                        <span>画像を選択する</span>
+                        <input type="file" id="product_image" name="product_image" accept="image/*" class="upload-input-hidden">
+                    </label>
                 </div>
-                <input type="file" id="product_image" name="product_image" accept="image/*" class="upload-input-hidden">
                 <div class="upload-preview" id="imagePreview"><!-- 画像プレビューエリア --></div>
-                @error('product_image')
-                    <span class="form-field-error">{{ $message }}</span>
-                @enderror
             </div>
+            @error('product_image')
+                <span class="form-field-error">{{ $message }}</span>
+            @enderror
         </div>
 
         <!-- 商品の詳細 -->
         <div class="section">
-            <h2 class="section-title">商品の詳細</h2>
-            
+            <p class="section-title">商品の詳細</p>
+
             <!-- カテゴリー -->
             <div class="form-field">
                 <label class="form-field-label">カテゴリー</label>
@@ -62,8 +63,8 @@
 
         <!-- 商品名と説明 -->
         <div class="section">
-            <h2 class="section-title">商品名と説明</h2>
-            
+            <p class="section-title">商品名と説明</p>
+
             <!-- 商品名 -->
             <div class="form-field">
                 <label class="form-field-label">商品名</label>
@@ -93,7 +94,7 @@
 
             <!-- 販売価格 -->
             <div class="form-field">
-                <label class="form-field-label">販売価格</label>
+                <label class="form-field-label">販売価格(税込)</label>
                 <div class="input-price-wrapper">
                     <input type="text" name="price" value="{{ old('price') }}" class="input-price">
                 </div>
