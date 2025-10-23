@@ -12,17 +12,11 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
-    /**
-     * 会員登録画面を表示
-     */
     public function showRegistrationForm()
     {
         return view('auth.register');
     }
 
-    /**
-     * 会員登録処理
-     */
     public function register(RegisterRequest $request)
     {
         $validated = $request->validated();
@@ -41,13 +35,10 @@ class RegisterController extends Controller
             'profile_image' => null,
         ]);
 
-        // セッションにユーザーIDを保存
         session(['pending_verification_user_id' => $user->id]);
 
-        // メール認証通知を送信
         $user->sendEmailVerificationNotification();
 
-        // ログアウトしてメール認証誘導画面へ
         Auth::logout();
 
         return redirect()->route('verification.notice');

@@ -9,18 +9,12 @@ use Illuminate\Auth\Events\Verified;
 
 class VerificationController extends Controller
 {
-    /**
-     * セッションからユーザーを取得
-     */
     private function getUserFromSession()
     {
         $userId = session('pending_verification_user_id');
         return $userId ? \App\Models\User::find($userId) : null;
     }
 
-    /**
-     * 認証済みユーザーの適切な画面へ遷移
-     */
     private function redirectAuthenticatedUser($user)
     {
         Auth::login($user);
