@@ -31,7 +31,7 @@ class ItemController extends Controller
             })
             ->with(['user', 'categories'])
             ->orderBy('created_at', 'desc')
-            ->paginate(12);
+            ->paginate(20);
             $title = 'マイリスト';
         } else {
             // 全商品表示（自分が出品した商品は除外）
@@ -40,7 +40,7 @@ class ItemController extends Controller
                     $query->where('user_id', '!=', Auth::id());
                 })
                 ->orderBy('created_at', 'desc')
-                ->paginate(12);
+                ->paginate(20);
         }
 
         return view('home', compact('items', 'title', 'tab'));
@@ -48,8 +48,9 @@ class ItemController extends Controller
 
     public function search(Request $request)
     {
-        // 検索キーワードの取得
+        // 検索キーワードとタブの取得
         $keyword = $request->get('keyword');
+        $tab = $request->get('tab');
 
         // 商品の検索クエリを構築
         $query = Item::with(['user', 'categories']);
@@ -59,15 +60,32 @@ class ItemController extends Controller
             $query->where('name', 'like', "%{$keyword}%");
         }
 
-        // 認証済みユーザーの場合、自分が出品した商品を除外
-        if (Auth::check()) {
-            $query->where('user_id', '!=', Auth::id());
+        // マイリストタブが選択されている場合
+        if ($tab === 'mylist') {
+            if (!Auth::check()) {
+                return redirect()->route('login');
+            }
+            // お気に入り商品のみを取得
+            $query->whereHas('likes', function($q) {
+                $q->where('user_id', Auth::id());
+            });
+        } else {
+            // 認証済みユーザーの場合、自分が出品した商品を除外
+            if (Auth::check()) {
+                $query->where('user_id', '!=', Auth::id());
+            }
         }
 
         // 作成日時の降順で並び替え
-        $items = $query->orderBy('created_at', 'desc')->paginate(12);
+        $items = $query->orderBy('created_at', 'desc')->paginate(20);
 
-        return view('home', compact('items', 'keyword'));
+        // $title変数を設定
+        $title = $keyword ? "「{$keyword}」の検索結果" : '商品検索';
+        if ($tab === 'mylist') {
+            $title = $keyword ? "「{$keyword}」のお気に入り商品" : 'お気に入り商品';
+        }
+
+        return view('home', compact('items', 'keyword', 'title', 'tab'));
     }
 
     /**

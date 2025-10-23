@@ -115,4 +115,19 @@
         animation: fadeOut 3s ease-in-out forwards;
     }
 
+    /* ページネーション */
+    .pagination {
+        gap: 4px;
+        margin: var(--spacing-lg) 0;
+    }
+
+    .pagination ul {
+        gap: 4px;
+    }
+
+    .pagination-item {
+        width: 36px;
+        height: 36px;
+        font-size: var(--font-size-sm);
+    }
 }

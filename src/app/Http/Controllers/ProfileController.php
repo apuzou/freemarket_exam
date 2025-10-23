@@ -17,10 +17,14 @@ class ProfileController extends Controller
         $page = $request->get('page', 'sell'); // デフォルトは出品商品
         
         // 出品した商品一覧（実際のデータを取得）
-        $soldItems = $user->items()->with('purchases')->get();
+        $soldItems = $user->items()->with('purchases')
+            ->orderBy('created_at', 'desc')
+            ->paginate(20);
         
         // 購入した商品一覧（実際のデータを取得）
-        $purchasedItems = $user->purchases()->with('item')->get();
+        $purchasedItems = $user->purchases()->with('item')
+            ->orderBy('created_at', 'desc')
+            ->paginate(20);
         
         return view('profile.mypage', [
             'user' => $user,

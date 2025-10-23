@@ -99,6 +99,105 @@ class ItemSeeder extends Seeder
                 'price' => 2500,
                 'condition' => 2, // 目立った傷や汚れなし
                 'image_path' => 'images/外出メイクアップセット.jpg',
+            ],
+            [
+                'user_id' => 1,
+                'name' => 'デジタルカメラ',
+                'brand' => 'Canon',
+                'description' => '高性能なデジタルカメラ',
+                'price' => 35000,
+                'condition' => 1, // 良好
+                'image_path' => '',
+            ],
+            [
+                'user_id' => 2,
+                'name' => 'スニーカー',
+                'brand' => 'Nike',
+                'description' => '快適なランニングシューズ',
+                'price' => 8500,
+                'condition' => 2, // 目立った傷や汚れなし
+                'image_path' => '',
+            ],
+            [
+                'user_id' => 3,
+                'name' => 'ワイヤレスイヤホン',
+                'brand' => 'Sony',
+                'description' => '高音質のワイヤレスイヤホン',
+                'price' => 12000,
+                'condition' => 1, // 良好
+                'image_path' => '',
+            ],
+            [
+                'user_id' => 4,
+                'name' => '腕時計',
+                'brand' => 'Seiko',
+                'description' => 'クラシックなアナログ時計',
+                'price' => 28000,
+                'condition' => 3, // やや傷や汚れあり
+                'image_path' => '',
+            ],
+            [
+                'user_id' => 5,
+                'name' => 'ゲーミングキーボード',
+                'brand' => 'Razer',
+                'description' => 'ゲーム用メカニカルキーボード',
+                'price' => 15000,
+                'condition' => 1, // 良好
+                'image_path' => '',
+            ],
+            [
+                'user_id' => 1,
+                'name' => 'ポータブル電源',
+                'brand' => 'Anker',
+                'description' => '大容量のポータブルバッテリー',
+                'price' => 18000,
+                'condition' => 2, // 目立った傷や汚れなし
+                'image_path' => '',
+            ],
+            [
+                'user_id' => 2,
+                'name' => '読書灯',
+                'brand' => null,
+                'description' => '目に優しいLED読書灯',
+                'price' => 3200,
+                'condition' => 1, // 良好
+                'image_path' => '',
+            ],
+            [
+                'user_id' => 3,
+                'name' => 'マウスパッド',
+                'brand' => 'Corsair',
+                'description' => 'ゲーミング用マウスパッド',
+                'price' => 2800,
+                'condition' => 3, // やや傷や汚れあり
+                'image_path' => '',
+            ],
+            [
+                'user_id' => 4,
+                'name' => 'スマートウォッチ',
+                'brand' => 'Apple',
+                'description' => '健康管理機能付きスマートウォッチ',
+                'price' => 45000,
+                'condition' => 2, // 目立った傷や汚れなし
+                'image_path' => '',
+            ],
+            [
+                'user_id' => 5,
+                'name' => 'ブルートゥーススピーカー',
+                'brand' => 'JBL',
+                'description' => '持ち運び可能なワイヤレススピーカー',
+                'price' => 6500,
+                'condition' => 4, // 状態が悪い
+                'image_path' => '',
+            ],
+            [
+                'user_id' => 1,
+                'name' => 'エコバッグ',
+                'brand' => null,
+                'description' => '環境に優しいエコバッグ',
+                'price' => 800,
+                'condition' => 1, // 良好
+                'image_path' => '',
             ]
         ];
 

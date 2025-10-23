@@ -1,17 +1,28 @@
 @extends('layouts.app')
 
-@section('title', $title)
+@section('title', $title ?? '商品一覧')
 
 @section('content')
     <!-- タブナビゲーション -->
     <div class="navigation-tabs">
         <div class="tab-list">
-            <a href="{{ route('home') }}" class="navigation-tab {{ $tab !== 'mylist' ? 'navigation-tab-active' : '' }}">
-                おすすめ
-            </a>
-            <a href="{{ route('home', ['tab' => 'mylist']) }}" class="navigation-tab {{ $tab === 'mylist' ? 'navigation-tab-active' : '' }}">
-                マイリスト
-            </a>
+            @if(isset($keyword))
+                <!-- 検索結果の場合 -->
+                <a href="{{ route('search', array_merge(request()->query(), ['tab' => null])) }}" class="navigation-tab {{ ($tab ?? '') !== 'mylist' ? 'navigation-tab-active' : '' }}">
+                    おすすめ
+                </a>
+                <a href="{{ route('search', array_merge(request()->query(), ['tab' => 'mylist'])) }}" class="navigation-tab {{ ($tab ?? '') === 'mylist' ? 'navigation-tab-active' : '' }}">
+                    マイリスト
+                </a>
+            @else
+                <!-- 通常のホーム画面の場合 -->
+                <a href="{{ route('home') }}" class="navigation-tab {{ ($tab ?? '') !== 'mylist' ? 'navigation-tab-active' : '' }}">
+                    おすすめ
+                </a>
+                <a href="{{ route('home', ['tab' => 'mylist']) }}" class="navigation-tab {{ ($tab ?? '') === 'mylist' ? 'navigation-tab-active' : '' }}">
+                    マイリスト
+                </a>
+            @endif
         </div>
     </div>
 
@@ -19,7 +30,7 @@
     <div class="card-grid">
         @forelse($items as $item)
             <a href="{{ route('item.show', $item) }}" class="card card-link">
-                @if($item->image_path)
+                @if($item->image_path && $item->image_path !== '')
                     <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="card-image">
                 @else
                     <div class="card-image-placeholder">商品画像</div>
@@ -39,8 +50,6 @@
 
     <!-- ページネーション -->
     @if($items->hasPages())
-        <div class="pagination-container">
-            {{ $items->links() }}
-        </div>
+        {{ $items->links('pagination.simple') }}
     @endif
 @endsection

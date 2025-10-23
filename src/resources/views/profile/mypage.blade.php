@@ -40,7 +40,7 @@
                 <div class="card-grid">
                     @foreach($soldItems as $item)
                         <a href="{{ route('item.show', $item) }}" class="card card-link">
-                            @if($item->image_path)
+                            @if($item->image_path && $item->image_path !== '')
                                 <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="card-image">
                             @else
                                 <div class="card-image-placeholder">商品画像</div>
@@ -56,6 +56,11 @@
                         </a>
                     @endforeach
                 </div>
+                
+                <!-- ページネーション -->
+                @if($soldItems->hasPages())
+                    {{ $soldItems->links('pagination.simple') }}
+                @endif
             @endif
         @else
             @if($purchasedItems->isEmpty())
@@ -64,7 +69,7 @@
                 <div class="card-grid">
                     @foreach($purchasedItems as $purchase)
                         <a href="{{ route('item.show', $purchase->item) }}" class="card card-link">
-                            @if($purchase->item->image_path)
+                            @if($purchase->item->image_path && $purchase->item->image_path !== '')
                                 <img src="{{ asset('storage/' . $purchase->item->image_path) }}" alt="{{ $purchase->item->name }}" class="card-image">
                             @else
                                 <div class="card-image-placeholder">商品画像</div>
@@ -76,6 +81,11 @@
                         </a>
                     @endforeach
                 </div>
+                
+                <!-- ページネーション -->
+                @if($purchasedItems->hasPages())
+                    {{ $purchasedItems->links('pagination.simple') }}
+                @endif
             @endif
         @endif
     </div>

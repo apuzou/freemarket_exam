@@ -7,7 +7,7 @@
     <div class="item-detail-section">
         <!-- 商品画像 -->
         <div class="item-image-section">
-            @if($item->image_path)
+            @if($item->image_path && $item->image_path !== '')
                 <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="card-image item-detail-image">
             @else
                 <div class="card-image-placeholder item-detail-image">商品画像</div>
