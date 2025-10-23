@@ -41,8 +41,15 @@ class RegisterController extends Controller
             'profile_image' => null,
         ]);
 
-        Auth::login($user);
+        // セッションにユーザーIDを保存
+        session(['pending_verification_user_id' => $user->id]);
 
-        return redirect()->route('mypage.profile');
+        // メール認証通知を送信
+        $user->sendEmailVerificationNotification();
+
+        // ログアウトしてメール認証誘導画面へ
+        Auth::logout();
+
+        return redirect()->route('verification.notice');
     }
 }

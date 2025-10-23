@@ -44,6 +44,7 @@ php artisan db:seed
 - nginx 1.21.1
 - Docker Compose
 - Laravel Fortify (認証)
+- mailhog (メール認証)
 
 ## データベース構造
 

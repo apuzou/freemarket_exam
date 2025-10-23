@@ -23,7 +23,8 @@ class CategorySeeder extends Seeder
             ['name' => 'ハンドメイド'],
             ['name' => 'アクセサリー'],
             ['name' => 'おもちゃ'],
-            ['name' => 'ベビー・キッズ']
+            ['name' => 'ベビー・キッズ'],
+            ['name' => 'その他']
         ];
 
         foreach ($categories as $category) {

@@ -90,4 +90,29 @@
     .category-tags {
         justify-content: center;
     }
+
+    /* メール認証 */
+    .email-verification-notice {
+        padding: var(--spacing-lg);
+    }
+
+    .verification-message {
+        font-size: var(--font-size-md);
+    }
+
+    .button-verification {
+        padding: 10px 20px;
+        font-size: var(--font-size-sm);
+    }
+
+    .resend-link {
+        font-size: var(--font-size-sm);
+    }
+
+    .success-message {
+        font-size: 14px;
+        padding: 10px 15px;
+        animation: fadeOut 3s ease-in-out forwards;
+    }
+
 }

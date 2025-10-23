@@ -21,6 +21,7 @@
 @import url("./pages/mypage.css");
 @import url("./pages/sell.css");
 @import url("./pages/show.css");
+@import url("./pages/verification.css");
 
 /* ユーティリティ */
 @import url("./utilities/responsive.css");

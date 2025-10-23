@@ -5,6 +5,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\VerificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,12 @@ Route::get('/search', [ItemController::class, 'search'])->name('search');
 
 // 商品詳細ルート（認証不要）
 Route::get('/item/{item}', [ItemController::class, 'show'])->name('item.show');
+
+// メール認証ルート（認証不要）
+Route::get('/email/verify', [VerificationController::class, 'notice'])->name('verification.notice');
+Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+Route::post('/email/check', [VerificationController::class, 'check'])->name('verification.check');
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
 
 Route::middleware(['auth'])->group(function () {
     // 商品出品ルート
