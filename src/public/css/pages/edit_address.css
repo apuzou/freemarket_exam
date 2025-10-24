@@ -1,0 +1,10 @@
+/* 配送先変更画面 */
+.edit-address-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+}
+
+.form-edit-address {
+    padding-bottom: var(--spacing-xl);
+}

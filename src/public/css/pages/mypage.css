@@ -1,20 +1,21 @@
+/* プロフィール情報セクション */
 .mypage-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: var(--spacing-xl);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: var(--spacing-xxl) auto;
+    padding: var(--spacing-md);
 }
 
-/* プロフィール情報セクション */
-.profile-info-section {
+.profile-info {
     display: flex;
     align-items: center;
-    margin-bottom: var(--spacing-xl);
+    gap: var(--spacing-lg);
+    margin-left: 180px;
 }
 
 .profile-image-container {
     flex-shrink: 0;
-    margin-left: var(--spacing-xl);
-    padding: var(--spacing-md);
 }
 
 .username {
@@ -22,20 +23,19 @@
     font-size: 28px;
     font-weight: bold;
     color: var(--color-gray);
-    margin: 0;
 }
 
 .button-edit-profile {
     flex-shrink: 0;
     display: inline-block;
-    margin-right: var(--spacing-xxl);
+    margin-right: 100px;
     padding: 12px 24px;
     background-color: var(--color-light);
     color: var(--color-danger);
+    font-size: var(--font-size-md);
     text-decoration: none;
     border: 1px solid var(--color-danger);
     border-radius: var(--border-radius-sm);
-    font-size: var(--font-size-md);
     transition: all 0.3s ease;
 }
 
@@ -44,7 +44,6 @@
     color: var(--color-light);
 }
 
-/* マイページコンテンツ */
 .mypage-content {
     min-height: 400px;
 }

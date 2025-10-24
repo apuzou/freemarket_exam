@@ -59,9 +59,17 @@
             </div>
 
             <!-- 購入ボタン -->
-            <div class="button-purchase">
-                <button type="submit" class="button-submit">購入手続きへ</button>
-            </div>
+            @auth
+                @if($item->user_id !== Auth::id())
+                    <div class="button-purchase">
+                        <a href="{{ route('purchase.create', $item) }}" class="button-submit">購入手続きへ</a>
+                    </div>
+                @endif
+            @else
+                <div class="button-purchase">
+                    <a href="{{ route('login') }}" class="button-submit">購入手続きへ</a>
+                </div>
+            @endauth
 
             <!-- 商品説明 -->
             <div class="form-field">

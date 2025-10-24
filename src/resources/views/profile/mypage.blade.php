@@ -3,19 +3,18 @@
 @section('title', 'マイページ')
 
 @section('content')
-<div class="mypage-container">
     <!-- プロフィール情報セクション -->
-    <div class="profile-info-section">
-        <div class="profile-image-container">
-            @if($user->profile && $user->profile->profile_image)
-                <img src="{{ asset('storage/' . $user->profile->profile_image) }}" alt="プロフィール画像" class="profile-image">
-            @else
-                <div class="profile-image-placeholder"></div>
-            @endif
+    <div class="mypage-container">
+        <div class="profile-info">
+            <div class="profile-image-container">
+                @if($user->profile && $user->profile->profile_image)
+                    <img src="{{ asset('storage/' . $user->profile->profile_image) }}" alt="プロフィール画像" class="profile-image">
+                @else
+                    <div class="profile-image-placeholder"></div>
+                @endif
+            </div>
+            <p class="username">{{ $user->name }}</p>
         </div>
-
-        <p class="username">{{ $user->name }}</p>
-
         <a href="{{ route('mypage.profile') }}" class="button-edit-profile">プロフィールを編集</a>
     </div>
 
@@ -89,5 +88,4 @@
             @endif
         @endif
     </div>
-</div>
 @endsection

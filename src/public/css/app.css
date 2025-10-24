@@ -22,6 +22,8 @@
 @import url("./pages/sell.css");
 @import url("./pages/show.css");
 @import url("./pages/verification.css");
+@import url("./pages/purchase.css");
+@import url("./pages/edit_address.css");
 
 /* ユーティリティ */
 @import url("./utilities/responsive.css");

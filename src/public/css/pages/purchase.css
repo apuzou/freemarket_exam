@@ -1,0 +1,163 @@
+/* 購入画面全体 */
+.purchase-container {
+    max-width: 1200px;
+    margin: 0 auto var(--spacing-xxl);
+    padding-top: 60px;
+}
+
+/* グリッドレイアウト */
+.purchase-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-xxl);
+    align-items: start;
+}
+
+/* 左側カラム */
+.purchase-left {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 右側カラム */
+.purchase-right {
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--spacing-lg);
+    gap: var(--spacing-lg);
+}
+
+/* 商品詳細表示 */
+.purchase-item-details {
+    display: flex;
+    align-items: start;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-lg);
+}
+
+.purchase-item-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: var(--border-radius-sm);
+}
+
+.card-image-placeholder.purchase-item-image {
+    width: 150px;
+    height: 150px;
+    background-color: var(--color-gray-lighter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gray);
+    border-radius: var(--border-radius-sm);
+}
+
+.purchase-item-info {
+    flex: 1;
+    padding-left: var(--spacing-lg);
+}
+
+/* フォームセクション */
+.form-group {
+    padding: var(--spacing-lg) var(--spacing-xxl);
+}
+
+.form-section-title {
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+    padding: var(--spacing-md);
+    color: var(--color-dark);
+}
+
+/* 支払い方法セレクトボックス */
+.payment-select {
+    width: 400px;
+    padding: var(--spacing-xs);
+    border: 1px solid var(--color-gray);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-md);
+    background-color: var(--color-white);
+    cursor: pointer;
+}
+
+.payment-select:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* 配送先表示 */
+.address-display {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm);
+    border: 1px dashed var(--color-gray);
+    border-radius: var(--border-radius-xs);
+    background-color: var(--color-lightest-gray);
+}
+
+.address-text {
+    margin-bottom: var(--spacing-xxs);
+    color: var(--color-dark);
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+}
+
+.address-text:last-child {
+    margin-bottom: 0;
+}
+
+.button-address-change {
+    position: absolute;
+    right: var(--spacing-xl);
+    top: var(--spacing-lg);
+    color: var(--color-info);
+    text-decoration: none;
+}
+
+.button-address-change:hover {
+    color: var(--color-info-hover);
+}
+
+/* 購入概要（右側ボックス） */
+.purchase-summary {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray);
+    margin: var(--spacing-lg) 0;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-xl) var(--spacing-xl);
+    border-bottom: 1px solid var(--color-gray-light);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-label {
+    color: var(--color-dark);
+}
+
+.summary-value-price {
+    color: var(--color-dark);
+    font-size: var(--font-size-lg);
+}
+
+
+.summary-value-payment {
+        color: var(--color-dark);
+        font-size: var(--font-size-md);
+    }
+
+/* 購入ボタン */
+.error-message {
+    color: var(--color-danger);
+    font-size: var(--font-size-sm);
+    margin-top: var(--spacing-xxs);
+}
