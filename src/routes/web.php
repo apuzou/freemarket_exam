@@ -38,6 +38,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/purchase/{item}', [PurchaseController::class, 'create'])->name('purchase.create');
     Route::post('/purchase/{item}', [PurchaseController::class, 'store'])->name('purchase.store');
+    Route::get('/purchase/success/{item}', [PurchaseController::class, 'success'])->name('purchase.success');
+    Route::get('/purchase/cancel/{item}', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
 
     Route::get('/purchase/address/{item}', [PurchaseController::class, 'editAddress'])->name('purchase.address.edit');
     Route::patch('/purchase/address/{item}', [PurchaseController::class, 'updateAddress'])->name('purchase.address.update');

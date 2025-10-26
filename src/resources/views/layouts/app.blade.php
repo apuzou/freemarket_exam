@@ -46,6 +46,13 @@
         </div>
     </header>
 
+    <!-- 成功メッセージ -->
+    @if(session('success'))
+        <div class="success-message">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <!-- メインコンテンツ -->
     <main class="main">
         @yield('content')
