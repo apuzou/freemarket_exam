@@ -8,7 +8,7 @@
 
     <form method="POST" action="{{ route('sell.store') }}" enctype="multipart/form-data">
         @csrf
-        <!-- 商品画像 -->
+        <!-- 商品画像アップロード -->
         <div class="form-field">
             <label class="form-field-label">商品画像</label>
             <div class="upload-area">
@@ -25,11 +25,11 @@
             @enderror
         </div>
 
-        <!-- 商品の詳細 -->
+        <!-- 商品の詳細（カテゴリ・状態） -->
         <div class="section">
             <p class="section-title">商品の詳細</p>
 
-            <!-- カテゴリー -->
+            <!-- カテゴリー選択 -->
             <div class="form-field">
                 <label class="form-field-label">カテゴリー</label>
                 <div class="category-selection">
@@ -45,7 +45,7 @@
                 @enderror
             </div>
 
-            <!-- 商品の状態 -->
+            <!-- 商品の状態選択 -->
             <div class="form-field">
                 <label class="form-field-label">商品の状態</label>
                 <select name="condition" class="form-field-input">

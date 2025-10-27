@@ -3,7 +3,7 @@
 @section('title', 'マイページ')
 
 @section('content')
-    <!-- プロフィール情報セクション -->
+    <!-- プロフィール情報（画像・名前・編集ボタン） -->
     <div class="mypage-container">
         <div class="profile-info">
             <div class="profile-image-container">
@@ -18,7 +18,7 @@
         <a href="{{ route('mypage.profile') }}" class="button-edit-profile">プロフィールを編集</a>
     </div>
 
-    <!-- タブナビゲーション -->
+    <!-- タブナビゲーション（出品/購入切替） -->
     <div class="navigation-tabs">
         <div class="tab-list">
             <a href="{{ route('mypage', ['page' => 'sell']) }}" class="navigation-tab {{ $currentPage === 'sell' ? 'navigation-tab-active' : '' }}">
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <!-- 商品一覧 -->
+    <!-- 商品一覧（カード表示・ページネーション） -->
     <div class="mypage-content">
         @if($currentPage === 'sell')
             @if($soldItems->isEmpty())

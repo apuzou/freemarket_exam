@@ -3,7 +3,7 @@
 @section('title', $title ?? '商品一覧')
 
 @section('content')
-    <!-- タブナビゲーション -->
+    <!-- タブナビゲーション（おすすめ/マイリスト切替） -->
     <div class="navigation-tabs">
         <div class="tab-list">
             @if(isset($keyword))
@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <!-- 商品一覧 -->
+    <!-- 商品一覧（カード表示） -->
     <div class="card-grid">
         @forelse($items as $item)
             <a href="{{ route('item.show', $item) }}" class="card card-link">

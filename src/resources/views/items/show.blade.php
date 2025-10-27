@@ -5,7 +5,7 @@
 @section('content')
 <div class="item-detail-container">
     <div class="item-detail-section">
-        <!-- 商品画像 -->
+        <!-- 商品画像表示 -->
         <div class="item-image-section">
             @if($item->image_path && $item->image_path !== '')
                 <img src="{{ asset('storage/' . $item->image_path) }}" alt="{{ $item->name }}" class="card-image item-detail-image">
@@ -58,7 +58,7 @@
                 </div>
             </div>
 
-            <!-- 購入ボタン -->
+            <!-- 購入ボタン（未ログイン時はログイン画面へ遷移） -->
             @auth
                 @if($item->user_id !== Auth::id())
                     <div class="button-purchase">
@@ -71,13 +71,13 @@
                 </div>
             @endauth
 
-            <!-- 商品説明 -->
+            <!-- 商品説明表示 -->
             <div class="form-field">
                 <p class="section-title">商品説明</p>
                 <div class="item-description">{{ $item->description }}</div>
             </div>
 
-            <!-- 商品カテゴリ・状態 -->
+            <!-- 商品カテゴリ・状態表示 -->
             <div class="form-field">
                 <p class="section-title">商品の情報</p>
                 <div class="item-details">
@@ -94,7 +94,7 @@
                 </div>
             </div>
 
-            <!-- コメント -->
+            <!-- コメント表示・投稿 -->
             <div class="form-field">
                 <p class="section-title">コメント({{ $commentCount }})</p>
                 @if($item->comments->count() > 0)

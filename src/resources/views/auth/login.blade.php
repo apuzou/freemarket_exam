@@ -8,18 +8,20 @@
 </head>
 <body>
     <header class="header">
-        <!-- ロゴ -->
+        <!-- ロゴリンク -->
         <a href="{{ route('home') }}" class="header-logo">
             <img src="{{ asset('storage/img/logo.svg') }}" alt="COACHTECH">
         </a>
     </header>
 
     <main class="main">
+        <!-- ログインフォーム -->
         <div class="form-container">
             <h1 class="form-title">ログイン</h1>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
+                <!-- メールアドレス入力 -->
                 <div class="form-field">
                     <label for="email" class="form-field-label">メールアドレス</label>
                     <input id="email" type="text" name="email" value="{{ old('email') }}" autofocus autocomplete="email" class="form-field-input">
@@ -28,6 +30,7 @@
                     @enderror
                 </div>
 
+                <!-- パスワード入力 -->
                 <div class="form-field">
                     <label for="password" class="form-field-label">パスワード</label>
                     <input id="password" type="password" name="password" autocomplete="current-password" class="form-field-input">

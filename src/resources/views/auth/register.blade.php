@@ -9,18 +9,20 @@
 
 <body>
     <header class="header">
-        <!-- ロゴ -->
+        <!-- ロゴリンク -->
         <a href="{{ route('home') }}" class="header-logo">
             <img src="{{ asset('storage/img/logo.svg') }}" alt="COACHTECH">
         </a>
     </header>
 
     <main class="main">
+        <!-- 会員登録フォーム -->
         <div class="form-container">
             <h1 class="form-title">会員登録</h1>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 
+                <!-- ユーザー名入力 -->
                 <div class="form-field">
                     <label for="name" class="form-field-label">ユーザー名</label>
                     <input id="name" type="text" name="name" value="{{ old('name') }}" autofocus autocomplete="name" class="form-field-input">
@@ -29,6 +31,7 @@
                     @enderror
                 </div>
 
+                <!-- メールアドレス入力 -->
                 <div class="form-field">
                     <label for="email" class="form-field-label">メールアドレス</label>
                     <input id="email" type="text" name="email" value="{{ old('email') }}" autocomplete="email" class="form-field-input">
@@ -37,6 +40,7 @@
                     @enderror
                 </div>
 
+                <!-- パスワード入力 -->
                 <div class="form-field">
                     <label for="password" class="form-field-label">パスワード</label>
                     <input id="password" type="password" name="password" autocomplete="new-password" class="form-field-input">
@@ -45,6 +49,7 @@
                     @enderror
                 </div>
 
+                <!-- 確認用パスワード入力 -->
                 <div class="form-field">
                     <label for="password_confirmation" class="form-field-label">確認用パスワード</label>
                     <input id="password_confirmation" type="password" name="password_confirmation" autocomplete="new-password" class="form-field-input">
