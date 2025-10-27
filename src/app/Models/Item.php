@@ -53,7 +53,7 @@ class Item extends Model
             '3' => 'やや傷や汚れあり',
             '4' => '状態が悪い'
         ];
-        
+
         return $conditions[$this->condition] ?? $this->condition;
     }
 }

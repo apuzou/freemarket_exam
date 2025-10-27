@@ -21,6 +21,7 @@ class VerificationController extends Controller
         return redirect()->route($user->hasCompletedProfile() ? 'home' : 'mypage.profile');
     }
 
+    // メール認証通知画面表示
     public function notice()
     {
         if (Auth::check() && Auth::user()->hasVerifiedEmail()) {
@@ -30,6 +31,7 @@ class VerificationController extends Controller
         return view('auth.email-verification-notice');
     }
 
+    // 認証メール再送信
     public function resend(Request $request)
     {
         $user = $this->getUserFromSession();
@@ -46,6 +48,7 @@ class VerificationController extends Controller
         return back()->with('resent', true);
     }
 
+    // 認証状態確認・リダイレクト
     public function check(Request $request)
     {
         $user = $this->getUserFromSession();
@@ -62,6 +65,7 @@ class VerificationController extends Controller
         return back()->with('resent', true);
     }
 
+    // メール認証リンク処理
     public function verify(Request $request)
     {
         $user = \App\Models\User::findOrFail($request->route('id'));

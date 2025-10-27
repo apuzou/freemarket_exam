@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
+    // 商品一覧表示（通常表示・マイリスト表示）
     public function index(Request $request)
     {
         $tab = $request->query('tab');
@@ -46,6 +47,7 @@ class ItemController extends Controller
         return view('home', compact('items', 'title', 'tab'));
     }
 
+    // 商品検索（キーワード検索・マイリスト検索）
     public function search(Request $request)
     {
         $keyword = $request->get('keyword');
@@ -85,12 +87,14 @@ class ItemController extends Controller
         return view('home', compact('items', 'keyword', 'title', 'tab'));
     }
 
+    // 商品出品画面表示
     public function create()
     {
         $categories = Category::all();
         return view('items.sell', compact('categories'));
     }
 
+    // 商品出品処理
     public function store(ExhibitionRequest $request)
     {
         $imagePath = null;
@@ -115,6 +119,7 @@ class ItemController extends Controller
         return redirect()->route('home')->with('success', '商品を出品しました。');
     }
 
+    // 商品詳細表示
     public function show(Item $item)
     {
         $item->load(['user', 'categories', 'comments.user']);
@@ -130,7 +135,7 @@ class ItemController extends Controller
         return view('items.show', compact('item', 'likeCount', 'commentCount', 'isLiked'));
     }
 
-
+    // いいね登録/解除
     public function toggleLike(Request $request, Item $item)
     {
         if (!Auth::check()) {
@@ -154,6 +159,7 @@ class ItemController extends Controller
         return redirect()->route('item.show', $item);
     }
 
+    // コメント投稿
     public function addComment(CommentRequest $request, Item $item)
     {
         Comment::create([

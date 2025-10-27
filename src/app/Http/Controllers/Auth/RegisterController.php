@@ -12,11 +12,13 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
+    // 会員登録画面表示
     public function create()
     {
         return view('auth.register');
     }
 
+    // 会員登録処理
     public function register(RegisterRequest $request)
     {
         $validated = $request->validated();

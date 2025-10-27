@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Log;
 
 class PurchaseController extends Controller
 {
+    // Stripe設定
     public function __construct()
     {
         Stripe::setApiKey(config('services.stripe.secret'));
     }
 
+    // 購入手続き画面表示
     public function create(Item $item)
     {
         $user = Auth::user();
@@ -32,6 +34,7 @@ class PurchaseController extends Controller
         return view('purchase.purchase', compact('item', 'shippingAddress'));
     }
 
+    // Stripe決済セッション作成
     public function store(PurchaseRequest $request, Item $item)
     {
         $shippingAddress = session('shipping_address') ?? [
@@ -78,6 +81,7 @@ class PurchaseController extends Controller
         }
     }
 
+    // Stripe決済成功時の処理
     public function success(Request $request, Item $item)
     {
         try {
@@ -127,6 +131,7 @@ class PurchaseController extends Controller
         }
     }
 
+    // Stripe決済キャンセル時の処理
     public function cancel(Item $item)
     {
         session()->forget('purchase_session_id');
@@ -136,6 +141,7 @@ class PurchaseController extends Controller
         return redirect()->route('purchase.create', $item)->with('error', '決済がキャンセルされました。');
     }
 
+    // 配送先変更画面表示
     public function editAddress(Item $item)
     {
         $user = Auth::user();
@@ -149,6 +155,7 @@ class PurchaseController extends Controller
         return view('purchase.edit_address', compact('item', 'currentAddress'));
     }
 
+    // 配送先変更処理
     public function updateAddress(AddressRequest $request, Item $item)
     {
         session([

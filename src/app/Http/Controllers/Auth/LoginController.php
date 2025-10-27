@@ -10,11 +10,13 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
+    // ログイン画面表示
     public function create()
     {
         return view('auth.login');
     }
 
+    // ログイン処理
     public function login(LoginRequest $request)
     {
         $credentials = $request->validated();
@@ -41,6 +43,7 @@ class LoginController extends Controller
         ]);
     }
 
+    // ログアウト処理
     public function logout(Request $request)
     {
         Auth::logout();

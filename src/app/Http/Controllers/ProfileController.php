@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
+    // マイページ表示（出品商品・購入商品タブ切替）
     public function index(Request $request)
     {
         $user = auth()->user();
@@ -29,11 +30,13 @@ class ProfileController extends Controller
         ]);
     }
 
+    // プロフィール編集画面表示
     public function edit()
     {
         return view('profile.editProfile');
     }
 
+    // プロフィール更新処理
     public function update(ProfileUpdateRequest $request)
     {
         $user = auth()->user();
