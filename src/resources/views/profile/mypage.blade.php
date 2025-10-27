@@ -55,7 +55,7 @@
                         </a>
                     @endforeach
                 </div>
-                
+
                 <!-- ページネーション -->
                 @if($soldItems->hasPages())
                     {{ $soldItems->links('pagination.simple') }}
@@ -80,7 +80,7 @@
                         </a>
                     @endforeach
                 </div>
-                
+
                 <!-- ページネーション -->
                 @if($purchasedItems->hasPages())
                     {{ $purchasedItems->links('pagination.simple') }}

@@ -116,11 +116,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const productImageInput = document.getElementById('product_image');
     const uploadSection = document.querySelector('.upload-area');
-    
+
     if (productImageInput && uploadSection) {
         productImageInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
-            
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {

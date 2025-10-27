@@ -16,9 +16,7 @@
 
     <!-- 成功メッセージ -->
     @if(session('resent'))
-        <div class="success-message">
-            認証メールを送信しました
-        </div>
+        <div class="success-message">認証メールを送信しました</div>
     @endif
 
     <!-- メインコンテンツ -->
@@ -26,13 +24,13 @@
         <div class="email-verification-notice">
             <p class="verification-message">登録していただいたメールアドレスに認証メールを送付しました。</p>
             <p class="verification-message">メール認証を完了してください。</p>
-            
+
             <div class="verification-actions">
                 <form method="POST" action="{{ route('verification.check') }}" class="verification-form">
                     @csrf
                     <button type="submit" class="button-verification">認証はこちらから</button>
                 </form>
-                
+
                 <form method="POST" action="{{ route('verification.resend') }}" class="resend-form">
                     @csrf
                     <button type="submit" class="resend-link">認証メールを再送する</button>

@@ -82,7 +82,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const paymentSelect = document.querySelector('select[name="payment_method"]');
     const paymentMethodDisplay = document.getElementById('selected-payment-method');
-    
     if (paymentSelect && paymentMethodDisplay) {
         paymentSelect.addEventListener('change', function() {
             const selectedOption = this.options[this.selectedIndex];
