@@ -12,15 +12,15 @@ class ProfileController extends Controller
     {
         $user = auth()->user();
         $page = $request->get('page', 'sell');
-        
+
         $soldItems = $user->items()->with('purchases')
             ->orderBy('created_at', 'desc')
             ->paginate(20);
-        
+
         $purchasedItems = $user->purchases()->with('item')
             ->orderBy('created_at', 'desc')
             ->paginate(20);
-        
+
         return view('profile.mypage', [
             'user' => $user,
             'currentPage' => $page,

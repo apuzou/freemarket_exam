@@ -139,8 +139,8 @@ class ItemController extends Controller
 
         $user = Auth::user();
         $like = Like::where('user_id', $user->id)
-                     ->where('item_id', $item->id)
-                     ->first();
+                    ->where('item_id', $item->id)
+                    ->first();
 
         if ($like) {
             $like->delete();

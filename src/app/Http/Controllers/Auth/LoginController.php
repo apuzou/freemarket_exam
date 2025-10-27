@@ -10,7 +10,7 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    public function showLoginForm()
+    public function create()
     {
         return view('auth.login');
     }
@@ -21,14 +21,14 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
-            
+
             if (!Auth::user()->hasVerifiedEmail()) {
                 session(['pending_verification_user_id' => Auth::user()->id]);
                 Auth::user()->sendEmailVerificationNotification();
                 Auth::logout();
                 return redirect()->route('verification.notice')->with('resent', true);
             }
-            
+
             if (Auth::user()->hasCompletedProfile()) {
                 return redirect()->intended('/');
             } else {

@@ -45,9 +45,6 @@ class Item extends Model
         return $this->hasMany(Purchase::class);
     }
 
-    /**
-     * 商品の状態を具体的表現に変換するアクセサー
-     */
     public function getConditionTextAttribute()
     {
         $conditions = [

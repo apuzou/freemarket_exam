@@ -41,7 +41,6 @@ class PurchaseController extends Controller
         ];
 
         try {
-            // Stripe Checkout Session を作成
             $session = Session::create([
                 'payment_method_types' => ['card'],
                 'line_items' => [[
