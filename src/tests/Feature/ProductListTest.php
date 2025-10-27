@@ -29,7 +29,7 @@ class ProductListTest extends TestCase
     {
         $user = User::factory()->create();
         $item = Item::factory()->create();
-        
+
         $user->purchases()->create([
             'item_id' => $item->id,
             'payment_method' => 1,
@@ -40,7 +40,7 @@ class ProductListTest extends TestCase
 
         $response = $this->get('/');
         $response->assertStatus(200);
-        
+
         $items = $response->viewData('items');
         $purchasedItem = $items->first();
         $this->assertTrue($purchasedItem->purchases()->exists());

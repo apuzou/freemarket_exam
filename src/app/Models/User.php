@@ -7,10 +7,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Contracts\Auth\CanResetPassword;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    public function hasVerifiedEmail()
+    {
+        return $this->email_verified_at !== null;
+    }
 
     protected $fillable = [
         'name',
@@ -54,11 +60,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function hasCompletedProfile()
     {
-        return $this->profile && 
-               isset($this->profile->postal_code) && 
-               $this->profile->postal_code !== '' && 
-               isset($this->profile->address) && 
-               $this->profile->address !== '';
+        return $this->profile && isset($this->profile->postal_code) && $this->profile->postal_code !== '' && isset($this->profile->address) && $this->profile->address !== '';
     }
 
     public function sendEmailVerificationNotification()

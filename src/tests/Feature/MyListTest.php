@@ -63,4 +63,14 @@ class MyListTest extends TestCase
         $likedItem = $items->first();
         $this->assertTrue($likedItem->purchases()->exists());
     }
+
+    // 未認証の場合は何も表示されない
+    public function test_unauthenticated_user_redirected_to_login()
+    {
+        Item::factory()->count(3)->create();
+
+        $response = $this->get('/?tab=mylist');
+
+        $response->assertRedirect('/login');
+    }
 }

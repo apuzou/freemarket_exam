@@ -17,11 +17,14 @@ class ProductRegistrationTest extends TestCase
     public function test_can_save_product_information()
     {
         Storage::fake('public');
-        
+
         $user = User::factory()->create();
         $category = Category::factory()->create();
-        
+
         $file = UploadedFile::fake()->create('product.jpg', 100);
+
+        $response = $this->actingAs($user)->get('/sell');
+        $response->assertStatus(200);
 
         $response = $this->actingAs($user)->post('/sell', [
             'name' => 'テスト商品',
@@ -40,7 +43,7 @@ class ProductRegistrationTest extends TestCase
             'price' => 10000,
             'condition' => 1,
         ]);
-        
+
         $response->assertRedirect('/');
     }
 }

@@ -19,11 +19,18 @@ class UserInfoChangeTest extends TestCase
             'user_id' => $user->id,
             'postal_code' => '123-4567',
             'address' => 'テスト住所',
+            'building' => 'テスト建物',
+            'profile_image' => 'profile_images/profile_edit.jpg',
         ]);
 
         $response = $this->actingAs($user)->get('/mypage/profile');
 
         $response->assertStatus(200);
-        $response->assertSee('テストユーザー');
+
+        $response->assertSee('storage/profile_images/profile_edit.jpg'); // プロフィール画像
+        $response->assertSee('テストユーザー'); // ユーザー名
+        $response->assertSee('123-4567'); // 郵便番号
+        $response->assertSee('テスト住所'); // 住所
+        $response->assertSee('テスト建物'); // 建物名
     }
 }

@@ -28,5 +28,7 @@ class PaymentMethodTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('クレジットカード支払い');
         $response->assertSee('コンビニ支払い');
+
+        $response->assertSee('selected-payment-method');
     }
 }

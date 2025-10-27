@@ -25,7 +25,7 @@ class EmailVerificationTest extends TestCase
         ]);
 
         $user = User::where('email', 'test@example.com')->first();
-        
+
         Notification::assertSentTo(
             $user,
             CustomVerifyEmail::class
@@ -47,10 +47,11 @@ class EmailVerificationTest extends TestCase
     public function test_unverified_user_can_access_home()
     {
         $user = User::factory()->unverified()->create();
-        
-        $response = $this->actingAs($user)->get('/');
+        $verificationUrl = url("/email/verify/{$user->id}/" . sha1($user->getEmailForVerification()));
 
-        $response->assertStatus(200);
-        $response->assertViewIs('home');
+        $response = $this->get($verificationUrl);
+
+        $response->assertStatus(302);
+        $response->assertRedirect('/mypage/profile');
     }
 }

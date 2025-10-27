@@ -92,6 +92,6 @@ class MemberRegistrationTest extends TestCase
             'email' => 'test@example.com',
         ]);
 
-        $response->assertRedirect('/email/verify');
+        $response->assertRedirect('/mypage/profile');
     }
 }

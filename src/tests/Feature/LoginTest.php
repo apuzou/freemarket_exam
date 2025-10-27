@@ -41,7 +41,7 @@ class LoginTest extends TestCase
         ]);
 
         $response->assertSessionHasErrors('email');
-        $this->assertStringContainsString('メールアドレスまたはパスワードが正しくありません', session('errors')->get('email')[0]);
+        $this->assertStringContainsString('ログイン情報が登録されていません', session('errors')->get('email')[0]);
     }
 
     // 正しい情報が入力された場合、ログイン処理が実行される
@@ -52,7 +52,7 @@ class LoginTest extends TestCase
             'password' => bcrypt('password123'),
             'email_verified_at' => now(),
         ]);
-        
+
         \App\Models\Profile::factory()->create([
             'user_id' => $user->id,
             'postal_code' => '123-4567',

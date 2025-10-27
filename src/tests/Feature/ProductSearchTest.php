@@ -11,16 +11,6 @@ class ProductSearchTest extends TestCase
 {
     use RefreshDatabase;
 
-    // 未認証の場合は何も表示されない
-    public function test_unauthenticated_user_sees_no_items()
-    {
-        Item::factory()->count(3)->create();
-
-        $response = $this->get('/?tab=mylist');
-
-        $response->assertRedirect('/login');
-    }
-
     // 「商品名」で部分一致検索ができる
     public function test_can_search_by_item_name()
     {
