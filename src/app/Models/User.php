@@ -55,8 +55,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function hasCompletedProfile()
     {
         return $this->profile && 
-               !empty($this->profile->postal_code) && 
-               !empty($this->profile->address);
+               isset($this->profile->postal_code) && 
+               $this->profile->postal_code !== '' && 
+               isset($this->profile->address) && 
+               $this->profile->address !== '';
     }
 
     public function sendEmailVerificationNotification()

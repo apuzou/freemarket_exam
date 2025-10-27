@@ -22,7 +22,7 @@ class ItemController extends Controller
         $title = '商品一覧';
 
         if ($tab === 'mylist') {
-            if (!Auth::check()) {
+            if (Auth::guest()) {
                 return redirect()->route('login');
             }
             $items = Item::whereHas('likes', function($query) {
@@ -60,7 +60,7 @@ class ItemController extends Controller
         }
 
         if ($tab === 'mylist') {
-            if (!Auth::check()) {
+            if (Auth::guest()) {
                 return redirect()->route('login');
             }
             $query->whereHas('likes', function($q) {
@@ -138,7 +138,7 @@ class ItemController extends Controller
     // いいね登録/解除
     public function toggleLike(Request $request, Item $item)
     {
-        if (!Auth::check()) {
+        if (Auth::guest()) {
             return redirect()->route('login')->with('message', 'いいね機能を使用するにはログインが必要です。');
         }
 

@@ -35,7 +35,10 @@ class PurchaseRequest extends FormRequest
                 'address' => Auth::user()->profile->address ?? '',
             ];
 
-            if (empty($shippingAddress['postal_code']) || empty($shippingAddress['address'])) {
+            if (isset($shippingAddress['postal_code']) === false || 
+                $shippingAddress['postal_code'] === '' || 
+                isset($shippingAddress['address']) === false || 
+                $shippingAddress['address'] === '') {
                 $validator->errors()->add('shipping_address', '配送先が設定されていません。住所変更ボタンから設定してください。');
             }
         });

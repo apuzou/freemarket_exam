@@ -24,14 +24,14 @@ class LoginController extends Controller
         if (Auth::attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
 
-            if (!Auth::user()->hasVerifiedEmail()) {
+            if (Auth::user()->hasVerifiedEmail() === false) {
                 session(['pending_verification_user_id' => Auth::user()->id]);
                 Auth::user()->sendEmailVerificationNotification();
                 Auth::logout();
                 return redirect()->route('verification.notice')->with('resent', true);
             }
 
-            if (Auth::user()->hasCompletedProfile()) {
+            if (Auth::user()->hasCompletedProfile() === true) {
                 return redirect()->intended('/');
             } else {
                 return redirect()->route('mypage.profile');
