@@ -56,4 +56,10 @@ class Item extends Model
 
         return $conditions[$this->condition] ?? $this->condition;
     }
+
+    // 商品が売却済みかどうかを判定
+    public function isSold()
+    {
+        return $this->purchases()->exists();
+    }
 }

@@ -60,15 +60,25 @@
 
             <!-- 購入ボタン（未ログイン時はログイン画面へ遷移） -->
             @auth
-                @if($item->user_id !== Auth::id())
+                @if($item->user_id !== Auth::id() && !$item->isSold())
                     <div class="button-purchase">
                         <a href="{{ route('purchase.create', $item) }}" class="button-submit">購入手続きへ</a>
                     </div>
+                @elseif($item->isSold())
+                    <div class="button-purchase">
+                        <div class="sold-message">この商品は売り切れです</div>
+                    </div>
                 @endif
             @else
-                <div class="button-purchase">
-                    <a href="{{ route('login') }}" class="button-submit">購入手続きへ</a>
-                </div>
+                @if(!$item->isSold())
+                    <div class="button-purchase">
+                        <a href="{{ route('login') }}" class="button-submit">購入手続きへ</a>
+                    </div>
+                @else
+                    <div class="button-purchase">
+                        <div class="sold-message">この商品は売り切れです</div>
+                    </div>
+                @endif
             @endauth
 
             <!-- 商品説明表示 -->

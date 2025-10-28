@@ -24,6 +24,7 @@
 @import url("./pages/verification.css");
 @import url("./pages/purchase.css");
 @import url("./pages/edit_address.css");
+@import url("./pages/verify-code.css");
 
 /* ユーティリティ */
 @import url("./utilities/responsive.css");

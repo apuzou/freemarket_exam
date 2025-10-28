@@ -122,7 +122,7 @@ class ItemController extends Controller
     // 商品詳細表示
     public function show(Item $item)
     {
-        $item->load(['user', 'categories', 'comments.user']);
+        $item->load(['user', 'categories', 'comments.user', 'purchases']);
 
         $likeCount = $item->likes()->count();
         $commentCount = $item->comments()->count();

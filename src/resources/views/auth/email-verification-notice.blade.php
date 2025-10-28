@@ -26,8 +26,7 @@
             <p class="verification-message">メール認証を完了してください。</p>
 
             <div class="verification-actions">
-                <form method="POST" action="{{ route('verification.check') }}" class="verification-form">
-                    @csrf
+                <form method="GET" action="{{ route('verification.show-code') }}" class="verification-form">
                     <button type="submit" class="button-verification">認証はこちらから</button>
                 </form>
 

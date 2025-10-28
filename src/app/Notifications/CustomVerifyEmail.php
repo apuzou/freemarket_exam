@@ -6,15 +6,32 @@ use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Messages\MailMessage;
 
 class CustomVerifyEmail extends VerifyEmail
 {
-    /**
-     * Get the verification URL for the given notifiable.
-     *
-     * @param  mixed  $notifiable
-     * @return string
-     */
+    use Queueable;
+
+    protected $verificationCode;
+
+    public function __construct($verificationCode)
+    {
+        $this->verificationCode = $verificationCode;
+    }
+
+    public function toMail($notifiable)
+    {
+        $verificationUrl = $this->verificationUrl($notifiable);
+
+        return (new MailMessage)
+            ->subject('メール認証')
+            ->view('emails.verify', [
+                'verificationCode' => $this->verificationCode,
+                'verificationUrl' => $verificationUrl,
+            ]);
+    }
+
     protected function verificationUrl($notifiable)
     {
         return URL::temporarySignedRoute(

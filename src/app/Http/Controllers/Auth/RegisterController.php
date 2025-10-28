@@ -41,8 +41,8 @@ class RegisterController extends Controller
 
         $user->sendEmailVerificationNotification();
 
-        Auth::login($user);
+        Auth::logout();
 
-        return redirect()->route('mypage.profile');
+        return redirect()->route('verification.notice');
     }
 }

@@ -23,8 +23,9 @@ Route::get('/search', [ItemController::class, 'search'])->name('search');
 Route::get('/item/{item}', [ItemController::class, 'show'])->name('item.show');
 
 Route::get('/email/verify', [VerificationController::class, 'notice'])->name('verification.notice');
+Route::get('/email/verify-code', [VerificationController::class, 'showCodeInput'])->name('verification.show-code');
+Route::post('/email/verify-code', [VerificationController::class, 'verifyCode'])->name('verification.verify-code');
 Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
-Route::post('/email/check', [VerificationController::class, 'check'])->name('verification.check');
 Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
 
 Route::middleware(['auth'])->group(function () {

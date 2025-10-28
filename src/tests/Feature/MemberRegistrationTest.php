@@ -77,7 +77,7 @@ class MemberRegistrationTest extends TestCase
         $this->assertStringContainsString('パスワードと確認用パスワードが一致しません', session('errors')->get('password')[0]);
     }
 
-    // 全ての項目が入力されている場合、会員情報が登録され、プロフィール設定画面に遷移される
+    // 全ての項目が入力されている場合、会員情報が登録され、メール認証画面に遷移される
     public function test_successful_registration()
     {
         $response = $this->post('/register', [
@@ -92,6 +92,6 @@ class MemberRegistrationTest extends TestCase
             'email' => 'test@example.com',
         ]);
 
-        $response->assertRedirect('/mypage/profile');
+        $response->assertRedirect('/email/verify');
     }
 }
