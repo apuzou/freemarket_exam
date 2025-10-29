@@ -16,7 +16,7 @@ Laravel 8.x で構築されたフリマサイトです。ユーザー認証、�
 
 ```bash
 # リポジトリのクローン
-git clone <git@github.com:apuzou/freemarket_exam.git>
+git clone git@github.com:apuzou/freemarket_exam.git
 cd freemarket_exam
 
 # Dockerコンテナのビルドと起動
