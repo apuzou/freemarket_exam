@@ -208,6 +208,14 @@ docker-compose down
 docker-compose up -d --build
 ```
 
+#### Apple Silicon(M1/M2)でイメージ起動に問題が出る場合
+
+一部の公式イメージが arm64 で不安定な場合は、該当サービスに一時的に次の指定を追加してください。
+
+```yml
+platform: linux/amd64
+```
+
 ### データベース接続エラー
 
 - `.env` ファイルの `DB_HOST=mysql` を確認
