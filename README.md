@@ -112,7 +112,8 @@ STRIPE_SECRET=sk_test_your_stripe_secret_key
 
 ## ER 図
 
-<img width="1200" height="718" alt="freemarket_exam_er" src="https://github.com/user-attachments/assets/0eef632b-6844-4a71-8829-90c9b67130b1" />
+<img width="2861" height="1511" alt="freemarket_er" src="https://github.com/user-attachments/assets/9b858456-c5f1-4405-a12f-c20b00567815" />
+
 
 ## 主要機能
 
