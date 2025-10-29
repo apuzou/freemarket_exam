@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -37,7 +37,7 @@ class ProfileController extends Controller
     }
 
     // プロフィール更新処理
-    public function update(ProfileUpdateRequest $request)
+    public function update(ProfileRequest $request)
     {
         $user = auth()->user();
 

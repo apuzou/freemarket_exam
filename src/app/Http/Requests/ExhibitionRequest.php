@@ -37,16 +37,10 @@ class ExhibitionRequest extends FormRequest
             'product_image.image' => '商品画像は画像ファイルを選択してください',
             'product_image.mimes' => '商品画像はJPEGまたはPNG形式を選択してください',
             'categories.required' => 'カテゴリーを選択してください',
-            'categories.array' => 'カテゴリーは配列で選択してください',
-            'categories.min' => 'カテゴリーを1つ以上選択してください',
             'condition.required' => '商品の状態を選択してください',
-            'condition.integer' => '商品の状態は整数で選択してください',
-            'condition.between' => '商品の状態は1〜4の範囲で選択してください',
             'price.required' => '販売価格を入力してください',
             'price.numeric' => '販売価格は数値で入力してください',
             'price.min' => '販売価格は0円以上で入力してください',
-            'brand.string' => 'ブランド名は文字列で入力してください',
-            'brand.max' => 'ブランド名は255文字以下で入力してください',
         ];
     }
 }

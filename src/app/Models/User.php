@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Support\Facades\Hash;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -72,7 +71,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         // 6桁のランダムな数字を生成
         $code = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
-        
+
         $this->verification_code = Hash::make($code);
         $this->verification_code_expires_at = now()->addMinutes(10); // 10分間有効
         $this->save();
