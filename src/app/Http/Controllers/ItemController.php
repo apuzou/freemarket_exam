@@ -70,7 +70,6 @@ class ItemController extends Controller
                     ->orderBy('likes.created_at', 'desc')
                     ->select('items.*');
             } else {
-                // ゲストユーザーの場合は結果が0件になるようにする
                 $query->whereRaw('1 = 0');
             }
         } else {
