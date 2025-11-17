@@ -5,7 +5,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\Auth\VerificationController;
-use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 // Fortifyが自動的にログイン・会員登録のルートを登録するため、カスタムルートは削除
 // ログアウトはFortifyのルートを使用

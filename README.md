@@ -94,7 +94,10 @@ STRIPE_SECRET=sk_test_your_stripe_secret_key
 
 ### 認証・決済
 
-- Laravel Fortify カスタム認証システム
+- Laravel Fortify（認証機能の実装）
+  - フォームリクエストによるバリデーション
+  - カスタムログイン・会員登録処理
+  - メール認証（確認コード入力方式）
 - Stripe 決済システム
 
 ## データベース構造

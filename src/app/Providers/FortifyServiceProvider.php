@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\AuthenticateLogin;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
@@ -24,6 +25,11 @@ class FortifyServiceProvider extends ServiceProvider
         // カスタムレスポンスの登録
         $this->app->singleton(LoginResponse::class, CustomLoginResponse::class);
         $this->app->singleton(RegisterResponse::class, CustomRegisterResponse::class);
+
+        $this->app->singleton(
+            \Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::class,
+            AuthenticatedSessionController::class
+        );
     }
 
     /**
