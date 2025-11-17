@@ -22,18 +22,19 @@ class ItemController extends Controller
         $title = '商品一覧';
 
         if ($tab === 'mylist') {
-            if (Auth::guest()) {
-                return redirect()->route('login');
+            if (Auth::check()) {
+                $items = Item::whereHas('likes', function($query) {
+                    $query->where('user_id', Auth::id());
+                })
+                ->join('likes', 'items.id', '=', 'likes.item_id')
+                ->where('likes.user_id', Auth::id())
+                ->with(['user', 'categories'])
+                ->orderBy('likes.created_at', 'desc')
+                ->select('items.*')
+                ->paginate(20);
+            } else {
+                $items = Item::query()->whereRaw('1 = 0')->paginate(20);
             }
-            $items = Item::whereHas('likes', function($query) {
-                $query->where('user_id', Auth::id());
-            })
-            ->join('likes', 'items.id', '=', 'likes.item_id')
-            ->where('likes.user_id', Auth::id())
-            ->with(['user', 'categories'])
-            ->orderBy('likes.created_at', 'desc')
-            ->select('items.*')
-            ->paginate(20);
             $title = 'マイリスト';
         } else {
             $items = Item::with(['user', 'categories'])
@@ -60,16 +61,18 @@ class ItemController extends Controller
         }
 
         if ($tab === 'mylist') {
-            if (Auth::guest()) {
-                return redirect()->route('login');
+            if (Auth::check()) {
+                $query->whereHas('likes', function($q) {
+                    $q->where('user_id', Auth::id());
+                })
+                    ->join('likes', 'items.id', '=', 'likes.item_id')
+                    ->where('likes.user_id', Auth::id())
+                    ->orderBy('likes.created_at', 'desc')
+                    ->select('items.*');
+            } else {
+                // ゲストユーザーの場合は結果が0件になるようにする
+                $query->whereRaw('1 = 0');
             }
-            $query->whereHas('likes', function($q) {
-                $q->where('user_id', Auth::id());
-            })
-                ->join('likes', 'items.id', '=', 'likes.item_id')
-                ->where('likes.user_id', Auth::id())
-                ->orderBy('likes.created_at', 'desc')
-                ->select('items.*');
         } else {
             if (Auth::check()) {
                 $query->where('user_id', '!=', Auth::id());

@@ -4,19 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\VerificationController;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
-Route::middleware(['guest'])->group(function () {
-    Route::get('/login', [LoginController::class, 'create'])->name('login');
-    Route::post('/login', [LoginController::class, 'login']);
-
-    Route::get('/register', [RegisterController::class, 'create'])->name('register');
-    Route::post('/register', [RegisterController::class, 'register']);
-});
-
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+// Fortifyが自動的にログイン・会員登録のルートを登録するため、カスタムルートは削除
+// ログアウトはFortifyのルートを使用
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+    ->name('logout')
+    ->middleware('auth');
 
 Route::get('/', [ItemController::class, 'index'])->name('home');
 Route::get('/search', [ItemController::class, 'search'])->name('search');
