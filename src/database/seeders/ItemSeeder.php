@@ -31,7 +31,7 @@ class ItemSeeder extends Seeder
             [
                 'user_id' => 3,
                 'name' => '玉ねぎ3束',
-                'brand' => null,
+                'brand' => 'なし',
                 'description' => '新鮮な玉ねぎ3束のセット',
                 'price' => 300,
                 'condition' => 3, // やや傷や汚れあり
@@ -58,7 +58,7 @@ class ItemSeeder extends Seeder
             [
                 'user_id' => 1,
                 'name' => 'マイク',
-                'brand' => null,
+                'brand' => 'なし',
                 'description' => '高音質のレコーディング用マイク',
                 'price' => 8000,
                 'condition' => 2, // 目立った傷や汚れなし
@@ -76,7 +76,7 @@ class ItemSeeder extends Seeder
             [
                 'user_id' => 3,
                 'name' => 'タンブラー',
-                'brand' => null,
+                'brand' => 'なし',
                 'description' => '使いやすいタンブラー',
                 'price' => 500,
                 'condition' => 4, // 状態が悪い
