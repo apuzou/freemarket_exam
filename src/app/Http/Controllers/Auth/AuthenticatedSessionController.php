@@ -2,29 +2,19 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Requests\LoginRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController as FortifyAuthenticatedSessionController;
+use Laravel\Fortify\Http\Requests\LoginRequest;
 
 class AuthenticatedSessionController extends FortifyAuthenticatedSessionController
 {
-    public function store(Request $request)
+    /**
+     * Attempt to authenticate a new session.
+     *
+     * @param  \Laravel\Fortify\Http\Requests\LoginRequest  $request
+     * @return mixed
+     */
+    public function store(LoginRequest $request)
     {
-        $loginRequest = new LoginRequest();
-        $validator = Validator::make(
-            $request->all(),
-            $loginRequest->rules(),
-            $loginRequest->messages()
-        );
-
-        if ($validator->fails()) {
-            throw (new ValidationException($validator))
-                ->errorBag('default')
-                ->redirectTo(route('login'));
-        }
-
         return parent::store($request);
     }
 }
